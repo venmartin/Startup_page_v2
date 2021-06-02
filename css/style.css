@@ -5,13 +5,18 @@
   padding: 0;
 }
 
+
+
 body {
   height: 90vh;
   color: black;
   background-color: white;
   padding: 0;
   margin: 0;
-  
+  background-image: url('/img/morning.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
   --header-height: 50px;
 
   margin: var(--header-height) 0 0 0;
@@ -27,7 +32,7 @@ header {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background: #333;
+  /* background: #333; */
   display: flex;
 }
 
@@ -37,7 +42,7 @@ header {
   background: none;
   outline: none;
   border: none;
-  color: white;
+  color: #1b1b1b;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -190,7 +195,18 @@ header {
   margin: 0px;
   left: 15px;
   align-items: center;
-  
+  background: none;
+  transition: 0.5s;
+}
+
+.online-search::placeholder {
+  color: black;
+  font-style: italic;
+}
+
+.online-search:hover {
+  background: #ffffff9f;
+  transition: 0.2s;
 }
 
 .websr-btn {
@@ -286,7 +302,7 @@ header {
   width: 60px;
   color: #000;
   background: #ffffff9f;
-  border-radius: 10px;
+  border-radius: 5px;
   align-items: center;
   opacity: 1;
   transform: scale(0);
