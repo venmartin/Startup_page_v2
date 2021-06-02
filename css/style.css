@@ -291,6 +291,7 @@ header {
   opacity: 1;
   transform: scale(0);
   transition: 0.2s;
+  background: none;
 }
 
 .dock__btn:hover {
