@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-< lang="en">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/tablet.css">
   <link rel="stylesheet" href="css/phone.css">
+  <link rel="stylesheet" href="css/menu.css/">
   <title>Welcome</title>
 </head>
 
@@ -28,11 +29,25 @@
  <div class="nav">
    <div class="nav-items"> 
      <ul class="list-items">
-       <li class="list__item">Item</li>
-       <li class="list__item">Item</li>
-       <li class="list__item">Item</li>
-       <li class="list__item">Item</li>
-       <li class="list__item">Item</li>
+       <li class="list__item">Shortcuts</li>
+       <li class="list__item">Clock <button class="time12h">12H</button><button class="time24h">24h</button></li>
+
+       <li class="list__item">Weather</li>
+       <li class="list__item">Favourites</li>
+       <li class="list__item">Customization</li>
+       <span class='line__divider'></span>
+       <div class="customize">
+         <div class="custom__wrapper">
+         <button class="time__pos__top">Top Right</button>
+         <button class="time__pos__bottom">Bottom Right</button>
+         <button class="text-size"></button>
+         <button class="show__time"></button>
+         <button class="show__weather"></button>
+         <button class="time__weather__size"></button>
+        </div>
+       </div>
+       <li class="list__item">News</li>
+       <li class="list__item">Search Icons</li>
      </ul>
    </div>
   
@@ -131,46 +146,40 @@
 <!-- /* Weather */ -->
     <div class="weather-container">  
       <div class='weather-card'>
+         <div class="weather-content">
+              <h2 class='city'>City</h2>
+              <h1 class='temp'>0°C</h1>
+              <img src='' alt="" class='icon'>
+              <button class="location__btn">
+                <svg onclick='getGeolocation()' stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4"></circle><path d="M13,4.069V2h-2v2.069C7.389,4.522,4.523,7.389,4.069,11H2v2h2.069c0.454,3.611,3.319,6.478,6.931,6.931V22h2v-2.069 c3.611-0.453,6.478-3.319,6.931-6.931H22v-2h-2.069C19.478,7.389,16.611,4.522,13,4.069z M12,18c-3.309,0-6-2.691-6-6s2.691-6,6-6 s6,2.691,6,6S15.309,18,12,18z"></path></svg>
+              </button>
+         </div>
+      </div> 
+              <div class="detailed-current-weather">
+                  <div div class="flex-desc">
+                    <!-- <img src='' alt="" class='icon'> -->
+                    <div class='description'></div>
+                  </div>
+                <div class='humidity'></div>
+                <div class='wind'></div>
+              </div>
+  </div>
+                
+      <div class="weather-search">
         <div class='search'>
-         <input type="text" class='search-box' placeholder="Enter Your City">
-         <button class='searchbtn'><svg class='search-icon' stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1.5em"
+          <input type="text" class='search-box' placeholder="Enter Your City">
+          <button class='searchbtn'><svg class='search-icon' stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1.5em"
             width="1.5em" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
             </path>
           </svg></i></button>
         </div>
-        
-        <div class="weather loading">
-            <h2 class='city'>Sydney</h2>
-            <h1 class='temp'>25°C</h1>
-            <div div class="flex-desc">
-              <img src='' alt="" class='icon'>
-              <div class='description'>Cloudy</div>
-            </div>
-          <div class='humidity'>humidity: 60%</div>
-          <div class='wind'>Wind Speed: 6.2km/h</div>
-        </div>
-      </div> 
-      <!-- card end div -->
-  </div>
-
-  
-  <div class="popup">
-    <div class='popup__btn__container popup__btn-move'>
-        <button class="popup__btn">
-          <svg class='popup__btn' stroke="white" fill="white" stroke-width="0" viewBox="0 0 16 16" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"></path></svg>
-        </button>
       </div>
-    </div>
 
 
   
 </div>
-
-<!-- 
-  <h2>What is your focus for today?</h2>
-  <h2 id="focus" contenteditable="true"></h2> -->
 
   <script src="js/main.js"></script>
 </body>

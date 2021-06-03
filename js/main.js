@@ -14,8 +14,10 @@ document.querySelector('.nav-menu').addEventListener('click', function() {
   if(navmenu.classList) {
     let navOpen = document.querySelector('.nav-items');
     let listItems = document.querySelector('.list-items');
+    let weatherCont = document.querySelector('.weather-container');
     navmenu.classList.toggle('nav-menu__open');
     navOpen.classList.toggle('nav-items__open');
+    weatherCont.classList.toggle('weather-container__shift');
     listItems.classList.toggle('list-items__grow');
 
   }
@@ -42,21 +44,7 @@ document.querySelector('.shortcut__menu').addEventListener('click', function () 
   }
 })
 
-
-//if(dropBtn.classList) {
-  //     let bgDrop = document.querySelector('.change-bg');
-  //     let bgBtn1 = document.querySelector('.shift-bg1');
-  //     let bgBtn2 = document.querySelector('.shift-bg2');
-  //     let bgBtn3 = document.querySelector('.shift-bg3');
-  //     bgBtn1.classList.toggle('shift-hide');
-  //     bgBtn2.classList.toggle('shift-hide');
-  //     bgBtn3.classList.toggle('shift-hide');
-  //     bgDrop.classList.toggle('dropdown-bg');
-  //     dropBtn.classList.toggle('dropbtn-rotate');
-
-
-
-// DOM Elements
+// DOM Elements for time
 
 const time = document.getElementById('time');
 const ampmTime = document.getElementById('ampm');
@@ -161,76 +149,157 @@ function addZero(num) {
 // userName.addEventListener('keyup', setName);
 // userName.addEventListener('blur', setName);
 
-// /*
 
-// http://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&appid=7b069d76e3865c86d3513410c18a4226
 
-// */
+/*
 
-// let weather = {
-//   apiKey: "7b069d76e3865c86d3513410c18a4226",
-//   fetchWeather: function(city) {
-//     fetch(
-//       "https://api.openweathermap.org/data/2.5/weather?q="
-//        + city
-//        + "&units=metric&appid=" 
-//        + this.apiKey
-//       )
-//         .then((response) => response.json())
-//         .then((data) => this.displayWeather(data));
-//     },
+One location = http://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&appid=7b069d76e3865c86d3513410c18a4226
 
-//     displayWeather: function(data) {
-//       const { name } = data;
-//       const { country } = data.sys;
-//       const { icon, description } = data.weather[0];
-//       const { temp, humidity } = data.main;
-//       const { speed } = data.wind;
+5 day forecast = https://api.openweathermap.org/data/2.5/onecall?lat=-33.98&lon=-151.12&exclude=hourly,daily&appid=7b069d76e3865c86d3513410c18a4226
+*/
+
+let weatherOriginal = {
+  apiKey: "7b069d76e3865c86d3513410c18a4226",
+  fetchWeather: function(latitude, longitude) {
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?lat="
+       + latitude
+       + "&lon="
+       + longitude
+       + "&units=metric&appid=" 
+       + this.apiKey
+      )
+        .then((response) => response.json())
+        .then((data) => this.displayWeather(data));
+    },
+
+    fetchWeatherSearch: function(city) {
+      fetch(
+       "https://api.openweathermap.org/data/2.5/weather?q="
+        + city
+        + "&units=metric&appid=" 
+        + this.apiKey
+       )
+         .then((response) => response.json())
+         .then((data) => this.displayWeather(data));
       
-//       document.querySelector('.city').innerText = `Weather in ${name}, ${country}`;
-//       document.querySelector('.icon').src = `https://openweathermap.org/img/w/${icon}.png`
-//       document.querySelector('.description').innerText = description;
-//       document.querySelector('.temp').innerText = `${Math.round(temp)}°C`;
-//       document.querySelector('.humidity').innerText = `Humidity: ${humidity}%`;
-//       document.querySelector('.wind').innerText = `Wind Speed: ${speed}km/h`;
-//       document.querySelector('.weather').classList.remove('loading');
-//       // document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?city%20of%20" + name + "')";
-//       document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?${name}")`;
-      
-//     },
-//     search: function () {
-//       this.fetchWeather(document.querySelector('.search-box').value);
-//     },
-// };
-// document
-//   .querySelector('.searchbtn')
-//   .addEventListener('click', function () {
-//     let inputShape = document.querySelector('.card');
-//     let cardTimeShape = document.querySelector('.card-time');
-//     cardTimeShape.classList.add('card-time-ani');
-//     cardTimeShape.classList.remove('.card-time');
-//     inputShape.classList.add('card-ani');
-//     inputShape.classList.remove('.card');
-//     let emptyBox = document.querySelector('input');
-//       emptyBox.innerHTML = '';
-//       weather.search();
-//   });
-
-//   document.querySelector('.search-box').addEventListener("keyup", function (event) {
-//     if (event.key == 'Enter') {
-//       let inputShape = document.querySelector('.card');
-//       let cardTimeShape = document.querySelector('.card-time');
-//       cardTimeShape.classList.add('card-time-ani');
-//       cardTimeShape.classList.remove('.card-time');
-//       inputShape.classList.add('card-ani');
-//       inputShape.classList.remove('.card');
-//       let emptyBox = document.querySelector('input');
-//       emptyBox.innerText = '';
-//       weather.search();
-      
-//     }
     
-//   })
+    },
+
+    displayWeather: function(data) {
+      const { name } = data;
+      const { country } = data.sys;
+      const { icon, description } = data.weather[0];
+      const { temp, humidity } = data.main;
+      const { speed } = data.wind;
+      
+      document.querySelector('.city').innerText = `${name}, ${country}`;
+      document.querySelector('.icon').src = `https://openweathermap.org/img/w/${icon}.png`
+      document.querySelector('.description').innerText = description;
+      document.querySelector('.temp').innerText = `${Math.round(temp)}°C`;
+      document.querySelector('.humidity').innerText = `Humidity: ${humidity}%`;
+      document.querySelector('.wind').innerText = `Wind Speed: ${speed}km/h`;
+      document.querySelector('.weather').classList.remove('loading');
+      // document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?city%20of%20" + name + "')";
+      document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?${name}")`;
+      
+    },
+    search: function () {
+      this.fetchWeatherSearch(document.querySelector('.search-box').value);
+    },
+};
+
+document
+  .querySelector('.searchbtn')
+  .addEventListener('click', function () {
+    let inputShape = document.querySelector('.card');
+    let cardTimeShape = document.querySelector('.card-time');
+    cardTimeShape.classList.add('card-time-ani');
+    cardTimeShape.classList.remove('.card-time');
+    inputShape.classList.add('card-ani');
+    inputShape.classList.remove('.card');
+    let emptyBox = document.querySelector('input');
+      emptyBox.innerHTML = '';
+      weather.search();
+  });
+
+  document.querySelector('.search-box').addEventListener("keyup", function (event) {
+    if (event.key == 'Enter') {
+    weatherOriginal.search();
+      
+    }
+  });
+    
+
+
+// Weather Forecast 7 days App
+
+const weather7Day = {
+  apiKey: "7b069d76e3865c86d3513410c18a4226",
+  fetchWeather: function(latitude, longitude) {
+    fetch(
+      "https://api.openweathermap.org/data/2.5/onecall?lat="
+      + latitude
+      + "&lon="
+      + longitude
+      + "&units=metric&exclude=hourly&appid="
+      + this.apiKey
+     )
+        .then((response) => response.json())
+        .then((data) => this.displayWeather(data));
+    },
+    displayWeather: function(data) {
+      const { timezone } = data;
+      const { country } = data.sys;
+      const { icon, description } = data.current.weather[0];
+      const { temp, humidity } = data.main;
+      const { speed } = data.wind;
+      
+      document.querySelector('.city').innerText = `Weather in ${timezone}`;
+      document.querySelector('.icon').src = `https://openweathermap.org/img/w/${icon}.png`
+      document.querySelector('.description').innerText = description;
+      document.querySelector('.temp').innerText = `${Math.round(temp)}°C`;
+      document.querySelector('.humidity').innerText = `Humidity: ${humidity}%`;
+      document.querySelector('.wind').innerText = `Wind Speed: ${speed}km/h`;
+      document.querySelector('.weather').classList.remove('loading');
+      // document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?city%20of%20" + name + "')";
+      document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?${name}")`;
+      
+    },
+    search: function () {
+      this.fetchWeather(document.querySelector('.search-box').value);
+    },
+};
+  
+
+
+// Geolocation
+
+function getGeolocation () {
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {
+      enableHighAccuracy: true,
+      timeout: 5000
+    })
+  } else {
+    console.log('Error: Not Supported');
+  }
+};
+
+function successCallback(position) {
+  const {latitude, longitude} = position.coords;
+  let shortLat = Math.round(latitude * 100) / 100;
+  let shortLong = Math.round(longitude * 100) / 100;
+  console.log(shortLat);
+  console.log(shortLong);
+
+  weatherOriginal.fetchWeather(latitude, longitude);
+}
+
+function errorCallback () {
+  console.log('Error: Location not allowed. Weather cannot be determined by location. Please use the search bar or enable location services.');
+ 
+}
 
 // // Change background on button click
 
@@ -293,36 +362,20 @@ function addZero(num) {
 
 
 
-// // Dock buttons open in a new tab.
+// Dock buttons open in a new tab.
 
 
-// let dockContainer = document.querySelectorAll('.dock__btn');
-// dockContainer.forEach(dockContainer => dockContainer.addEventListener('click', function (e) {
-//     let item = e.currentTarget.id;
-//     window.open(`https://www.${item}.com`, '_blank');
-// }));
-
-
-// // Docker pop up // Mobile devices
-
-// document.querySelector('.popup__btn').addEventListener('click', function () {
-//   let popBtn = document.querySelector('.popup__btn');
- 
-//     if (popBtn.classList) {
-//       let dockPop = document.querySelector('.dock');
-//       let shortcutPop = document.querySelector('.shortcut-container');
-//     dockPop.classList.toggle('popup__menu');
-//     shortcutPop.classList.toggle('popup__short');
-//     popBtn.classList.toggle('pop__rotate');
-//     popBtn.classList.toggle('popup__btn-move');
-//   }
-// })
-
+let dockContainer = document.querySelectorAll('.dock__btn');
+dockContainer.forEach(dockContainer => dockContainer.addEventListener('click', function (e) {
+    let item = e.currentTarget.id;
+    window.open(`https://www.${item}.com`, '_blank');
+}));
 
 
 
 // // Run the app
 
+getGeolocation();
 currentTime();
 // setBgGreeting();
 // getName();
