@@ -175,12 +175,13 @@
     </div>
 
     <!--DEMO01-->
-      <div id="animatedModal">
+      <div id="animatedModal" class="modal__bg__img">
         <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
-        <div class="close-animatedModal"> 
-            CLOSE MODAL
+        <div class="close__btn__wrapper">
+        <div id='close__btn__modal' class="close-animatedModal"> 
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.116 8l-4.558 4.558.884.884L8 8.884l4.558 4.558.884-.884L8.884 8l4.558-4.558-.884-.884L8 7.116 3.442 2.558l-.884.884L7.116 8z"></path></svg>
         </div>
-            
+        </div>
         <div class="modal-content">
                   <!--Your modal content goes here-->
            <div class="weather-search">
@@ -197,32 +198,34 @@
       </div>
      <div class="detailed-current-weather">
       <div class="current__weather">
-            <h2 class='city current__city'>Sydney</h2>
-            <h1 class='temp current__temp'>25°C</h1>
+              <h1 class='temp current__temp'>25°C</h1>
               <img src='' alt="" class='icon current__icon'>
             <!-- <div div class="flex-desc current__desc"> -->
               <div class='description'>Cloudy</div>
           </div>
+          <div class="vert_divider"></div>
           <div class="extended__details">
-            <div class="sunrise">12</div>
-            <div class="sunset">1222</div>
-            <div class='humidity'>humidity: 60%</div>
+            <div class="sunrise"></div>
+            <div class="sunset"></div>
+            <div class='humidity'></div>
             <div class='wind'>Wind Speed: 6.2km/h</div>
         </div>
-        </div>
+      </div>
        
       </div>    
-      
+      <div class="city__wrapper">
+        <h2 class='city current__city'>Sydney</h2>
+      </div>
      
 
         <div class="weekly__forecast">
-          <div id='current__forecast__small' class="weather__forecast__item">
+          <!-- <div id='current__forecast__small' class="weather__forecast__item">
             <img src='' alt="" class='icon__small'>
             <div class="day">MON</div>
             <span class='divider'></span>
             <div class="small__temp">25°C</div>
               
-          </div>
+          </div> -->
           
           <div id="weather__forecast">
           <div class="weather__forecast__item">
@@ -233,45 +236,8 @@
               
           </div>
           
-          <div class="weather__forecast__item">
-            <img src='' alt="" class='icon__small'>
-            <div class="day">WED</div>
-            <span class='divider'></span>
-            <div class="third__temp small__temp">25°C</div>
-              
           </div>
-          
-          <div class="weather__forecast__item">
-            <img src='' alt="" class='icon__small'>
-            <div class="day">THU</div>
-            <span class='divider'></span>
-            <div class="fourth__temp small__temp">25°C</div>
-              
           </div>
-
-          <div class="weather__forecast__item">
-            <img src='' alt="" class='icon__small'>
-            <div class="day">FRI</div>
-            <span class='divider'></span>
-            <div class="fifth__temp small__temp">25°C</div>
-              
-          </div>
-          <div class="weather__forecast__item">
-            <img src='' alt="" class='icon__small'>
-            <div class="day">SAT</div>
-            <span class='divider'></span>
-            <div class="sixth__temp small__temp">25°C</div>
-            
-          </div>
-          <div class="weather__forecast__item">
-            <img src='' alt="" class='icon__small'>
-            <div class="day">SUN</div>
-            <span class='divider'></span>
-            <div class="seventh__temp small__temp">25°C</div>
-              
-          </div>
-        </div>
-        </div>
         </div>
      </div> 
     </div>
