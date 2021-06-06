@@ -15,17 +15,28 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/tablet.css">
   <link rel="stylesheet" href="css/phone.css">
-  <link rel="stylesheet" href="css/menu.css/">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="../css/fakeLoader.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css">
   <title>Welcome</title>
 </head>
 
-<body class='preload'>
+<body class='preload background'>
+  
+  
+  <!-- fake loader -->
+  <div class="fakeLoader"></div>
+
+    
+
   <header class="header">
     <button id="nav-btn" class="nav-menu"  type='button' >
       <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
   </header>
-  <!-- Nav Bar -->
+
+
+<!-- Nav Bar -->
  <div class="nav">
    <div class="nav-items"> 
      <ul class="list-items">
@@ -146,8 +157,9 @@
 <!-- /* Weather */ -->
     <div class="weather-container">  
       <div class='weather-card'>
-         <div class="weather-content">
-              <h2 class='city'>City</h2>
+        <!--Call your modal-->
+    <div class="weather-content">
+              <!-- <h2 class='city'>City</h2> -->
               <h1 class='temp'>0°C</h1>
               <img src='' alt="" class='icon'>
               <button class="location__btn">
@@ -155,33 +167,129 @@
               </button>
          </div>
       </div> 
-              <div class="detailed-current-weather">
-                  <div div class="flex-desc">
-                    <!-- <img src='' alt="" class='icon'> -->
-                    <div class='description'></div>
-                  </div>
-                <div class='humidity'></div>
-                <div class='wind'></div>
-              </div>
-  </div>
-                
-      <div class="weather-search">
-        <div class='search'>
+    <div class="weather-modal">
+    <!-- <div id="demo01" href="#animatedModal"> -->
+      <button id="demo01" href="#animatedModal">
+        <!-- <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg> -->
+      </button>
+    </div>
+
+    <!--DEMO01-->
+      <div id="animatedModal">
+        <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
+        <div class="close-animatedModal"> 
+            CLOSE MODAL
+        </div>
+            
+        <div class="modal-content">
+                  <!--Your modal content goes here-->
+           <div class="weather-search">
+        <div class='city__search'>
           <input type="text" class='search-box' placeholder="Enter Your City">
-          <button class='searchbtn'><svg class='search-icon' stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1.5em"
-            width="1.5em" xmlns="http://www.w3.org/2000/svg">
+          <button class='searchbtn'>
+            <svg class='search-icon' stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="0.8em"
+            width="0.8em" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
             </path>
           </svg></i></button>
         </div>
       </div>
+     <div class="detailed-current-weather">
+      <div class="current__weather">
+            <h2 class='city current__city'>Sydney</h2>
+            <h1 class='temp current__temp'>25°C</h1>
+              <img src='' alt="" class='icon current__icon'>
+            <!-- <div div class="flex-desc current__desc"> -->
+              <div class='description'>Cloudy</div>
+          </div>
+          <div class="extended__details">
+            <div class="sunrise">12</div>
+            <div class="sunset">1222</div>
+            <div class='humidity'>humidity: 60%</div>
+            <div class='wind'>Wind Speed: 6.2km/h</div>
+        </div>
+        </div>
+       
+      </div>    
+      
+     
 
+        <div class="weekly__forecast">
+          <div id='current__forecast__small' class="weather__forecast__item">
+            <img src='' alt="" class='icon__small'>
+            <div class="day">MON</div>
+            <span class='divider'></span>
+            <div class="small__temp">25°C</div>
+              
+          </div>
+          
+          <div id="weather__forecast">
+          <div class="weather__forecast__item">
+            <img src='' alt="" class='icon__small'>
+            <div class="day">TUE</div>
+            <span class='divider'></span>
+              <div class="second__temp small__temp">25°C</div>
+              
+          </div>
+          
+          <div class="weather__forecast__item">
+            <img src='' alt="" class='icon__small'>
+            <div class="day">WED</div>
+            <span class='divider'></span>
+            <div class="third__temp small__temp">25°C</div>
+              
+          </div>
+          
+          <div class="weather__forecast__item">
+            <img src='' alt="" class='icon__small'>
+            <div class="day">THU</div>
+            <span class='divider'></span>
+            <div class="fourth__temp small__temp">25°C</div>
+              
+          </div>
 
-  
-</div>
+          <div class="weather__forecast__item">
+            <img src='' alt="" class='icon__small'>
+            <div class="day">FRI</div>
+            <span class='divider'></span>
+            <div class="fifth__temp small__temp">25°C</div>
+              
+          </div>
+          <div class="weather__forecast__item">
+            <img src='' alt="" class='icon__small'>
+            <div class="day">SAT</div>
+            <span class='divider'></span>
+            <div class="sixth__temp small__temp">25°C</div>
+            
+          </div>
+          <div class="weather__forecast__item">
+            <img src='' alt="" class='icon__small'>
+            <div class="day">SUN</div>
+            <span class='divider'></span>
+            <div class="seventh__temp small__temp">25°C</div>
+              
+          </div>
+        </div>
+        </div>
+        </div>
+     </div> 
+    </div>
+        
+              
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../js/fakeLoader.min.js"></script>
+  <script src="js/animatedModal.js"></script>
   <script src="js/main.js"></script>
+  
+
+  <script>
+    
+
+  </script>
+  
 </body>
 
 </html>

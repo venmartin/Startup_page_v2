@@ -4,6 +4,26 @@ window.addEventListener('load', function () {
   document.body.classList.remove('preload');
 })
 
+// Loader for page on start
+
+$.fakeLoader({
+  timeToHide: 1,
+  bgColor: "#376fad",
+  spinner: "spinner3"
+});
+
+
+// Modal
+
+$("#demo01").animatedModal({
+  color: '#a2a2a2',
+  animatedIn: 'backInUp',
+  animatedOut: 'zoomOutDown',
+  animationDuration: '1s',
+  overflow: 'auto'
+});
+
+
 // Nav bar
 
 // Show nav
@@ -57,9 +77,12 @@ const showAMorPM = true;
 
 function currentTime() {
   let today = new Date(),
-   hour = today.getHours(),
-   mins = today.getMinutes(),
-   secs = today.getSeconds();
+      month = today.getMonth(),
+      day = today.getDay(),
+      date = today.getDate(),
+      hour = today.getHours(),
+      hour24 = today.getHours(),
+      mins = today.getMinutes();
 
 //    // This will set AM or PM
 
@@ -190,22 +213,31 @@ let weatherOriginal = {
       const { name } = data;
       const { country } = data.sys;
       const { icon, description } = data.weather[0];
-      const { temp, humidity } = data.main;
+      const { temp, humidity, feels_like } = data.main;
       const { speed } = data.wind;
+      const { lon, lat} = data.coord;
+      
+      let weatherIcons = document.querySelectorAll('.icon');
+        weatherIcons.forEach(function(item){
+          item.src = `icons/${icon}.svg`
+        });
       
       document.querySelector('.city').innerText = `${name}, ${country}`;
-      document.querySelector('.icon').src = `https://openweathermap.org/img/w/${icon}.png`
       document.querySelector('.description').innerText = description;
-      document.querySelector('.temp').innerText = `${Math.round(temp)}°C`;
+      let weatherTemp = document.querySelectorAll('.temp');
+        weatherTemp.forEach(function(item){
+          item.innerText = `${Math.round(temp)}°C`;
+        });
       document.querySelector('.humidity').innerText = `Humidity: ${humidity}%`;
       document.querySelector('.wind').innerText = `Wind Speed: ${speed}km/h`;
-      document.querySelector('.weather').classList.remove('loading');
+      // document.querySelector('.weather').classList.remove('loading');
       // document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?city%20of%20" + name + "')";
-      document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?${name}")`;
-      
+      // document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?${name}")`;
+      weather7Day.fetchWeather(lat.toFixed(2), lon.toFixed(2));
     },
     search: function () {
       this.fetchWeatherSearch(document.querySelector('.search-box').value);
+      
     },
 };
 
@@ -214,9 +246,7 @@ document
   .addEventListener('click', function () {
     let inputShape = document.querySelector('.card');
     let cardTimeShape = document.querySelector('.card-time');
-    cardTimeShape.classList.add('card-time-ani');
     cardTimeShape.classList.remove('.card-time');
-    inputShape.classList.add('card-ani');
     inputShape.classList.remove('.card');
     let emptyBox = document.querySelector('input');
       emptyBox.innerHTML = '';
@@ -233,6 +263,9 @@ document
 
 
 // Weather Forecast 7 days App
+const currentTemp = document.getElementById('current__forecast__small');
+const forecastItem = document.getElementById('weather__forecast');
+
 
 const weather7Day = {
   apiKey: "7b069d76e3865c86d3513410c18a4226",
@@ -242,35 +275,90 @@ const weather7Day = {
       + latitude
       + "&lon="
       + longitude
-      + "&units=metric&exclude=hourly&appid="
+      + "&units=metric&exclude=hourly,minutely&appid="
       + this.apiKey
      )
         .then((response) => response.json())
         .then((data) => this.displayWeather(data));
     },
     displayWeather: function(data) {
-      const { timezone } = data;
-      const { country } = data.sys;
-      const { icon, description } = data.current.weather[0];
-      const { temp, humidity } = data.main;
-      const { speed } = data.wind;
+      const { sunrise, sunset } = data.current;
+      const { icon } = data.daily[0].weather[0];
       
-      document.querySelector('.city').innerText = `Weather in ${timezone}`;
-      document.querySelector('.icon').src = `https://openweathermap.org/img/w/${icon}.png`
-      document.querySelector('.description').innerText = description;
-      document.querySelector('.temp').innerText = `${Math.round(temp)}°C`;
-      document.querySelector('.humidity').innerText = `Humidity: ${humidity}%`;
-      document.querySelector('.wind').innerText = `Wind Speed: ${speed}km/h`;
-      document.querySelector('.weather').classList.remove('loading');
-      // document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?city%20of%20" + name + "')";
-      document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?${name}")`;
       
+      let weatherIcons = document.querySelectorAll('.icon__small');
+        weatherIcons.forEach(function(item){
+          item.src = `icons/${icon}.svg`
+        });
+
+      
+      let everyOtherDay = '';
+      data.daily.forEach((day, index) => {
+        if (index == 0) {
+          
+          currentTemp.innerHTML = `          
+          <div id='current__forecast__small' class="weather__forecast__item">
+           <img src='icons/${day.weather[0].icon}.svg' alt="" class='icon icon__small'>
+           <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
+           <span class='divider'></span>
+           <div class="temp small__temp">${Math.ceil(day.temp.day)}</div>
+               <div class="min__max__wrapper">
+                 <div class="small__min">${Math.round(day.temp.min)}</div>
+                 <div class="small__max">${Math.round(day.temp.max)}</div>
+              </div>
+            <div class='daily__desc'>
+              <div class='daily__humidity'>${day.humidity}%</div>
+              <div class='daily__windspeed'>${day.wind_speed}km/H</div>
+            </div>
+          `
+        } else {
+                   
+          everyOtherDay += `
+          <div id='current__forecast__small' class="weather__forecast__item">
+          <div class="weather__forecast__item">
+            <img src='icons/${day.weather[0].icon}.svg' alt="" class='d3 icon__small'>
+              <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
+                <span class='divider'></span>
+            <div class="third__temp small__temp">${Math.round(day.temp.day)}</div>
+            <div class="min__max__wrapper">
+              <div class="small__min">${Math.round(day.temp.min)}</div>
+              <div class="small__max">${Math.round(day.temp.max)}</div>
+            </div>
+            <div class='daily__desc'>
+              <div class='daily__humidity'>${day.humidity}%</div>
+              <div class='daily__windspeed'>${day.wind_speed}km/H</div>
+            </div>
+        </div>
+        </div>`
+        
+        
+        }
+      })
+      
+
+      
+      document.querySelector('.sunrise').innerText = `Sunrise: ${window.moment(sunrise*1000).format('HH:mm a')}`;
+      document.querySelector('.sunset').innerText = `Sunrise: ${window.moment(sunset*1000).format('HH:mm a')}`;
+
+      // document.querySelector('.city').innerText = `Weather in ${timezone}`;
+      // document.querySelector('.icon').src = `https://openweathermap.org/img/w/${icon}.png`
+      // document.querySelector('.description').innerText = description;
+      // document.querySelector('.temp').innerText = `${Math.round(temp)}°C`;
+      // document.querySelector('.humidity').innerText = `Humidity: ${humidity}%`;
+      // document.querySelector('.wind').innerText = `Wind Speed: ${speed}km/h`;
+      // document.querySelector('.weather').classList.remove('loading');
+      
+      forecastItem.innerHTML = everyOtherDay;
     },
+
     search: function () {
       this.fetchWeather(document.querySelector('.search-box').value);
     },
+    
 };
-  
+
+
+
 
 
 // Geolocation
@@ -294,6 +382,7 @@ function successCallback(position) {
   console.log(shortLong);
 
   weatherOriginal.fetchWeather(latitude, longitude);
+  weather7Day.fetchWeather(latitude, longitude);
 }
 
 function errorCallback () {
@@ -379,3 +468,5 @@ getGeolocation();
 currentTime();
 // setBgGreeting();
 // getName();
+
+
