@@ -173,13 +173,69 @@ function addZero(num) {
 // userName.addEventListener('blur', setName);
 
 
+// News Modal
+const articleItem = document.getElementById('article__box');
 
+
+let newsArticles = {
+
+fetchNews: function() {
+  fetch("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=world&lang=en&country="
+    // + "AU"
+    + "&media=True", {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-key": "fcca3bccfemshc5d447449233745p17d6dcjsndda59961c6e2",
+      "x-rapidapi-host": "newscatcher.p.rapidapi.com"
+    }
+  })
+.then(response => response.json())
+// .catch(err => {
+// 	console.error(err);
+// })
+.then((data) => this.displayNews(data));
+
+
+  },
+
+
+  displayNews: function (data) {
+    // const { articles } = data;
+    // const { summary, country, link, language, media, title, topic} = data.articles[0];
+
+
+
+    let createArticle = ``;
+    data.articles.forEach((article, index) => {
+      if (index == 0) {
+
+      } else {
+        createArticle += `
+        <div id="article__box">
+          <div class="news__media__img"><img src='${article.media}' alt="" class='media__img'></div>
+          <div class="news__title">${article.title}</div>
+          <div class="news__summary">${article.summary}</div>
+          <div class="news__topic">${article.topic}</div>
+          <div class="news__country">${article.country}</div>
+          <div class="original__source">${article.rights}</div>
+          <div class="original__link"><a href="${article.link}" target="_blank" rel="noopener no-referrer">Source</a></div>
+      </div>
+        `
+  } 
+  
+})
+  articleItem.innerHTML = createArticle;
+},
+};
+
+// newsArticles.fetchNews();
 /*
 
 One location = http://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&appid=7b069d76e3865c86d3513410c18a4226
 
 5 day forecast = https://api.openweathermap.org/data/2.5/onecall?lat=-33.98&lon=-151.12&exclude=hourly,daily&appid=7b069d76e3865c86d3513410c18a4226
 */
+
 const weatherModalBg = document.querySelector('.modal__bg__img');
 
 let weatherOriginal = {
@@ -272,7 +328,7 @@ document
   .addEventListener('click', function () {
     let emptyBox = document.querySelector('input');
       emptyBox.innerHTML = '';
-      weather.search();
+      weatherOriginal.search();
   });
 
   document.querySelector('.search-box').addEventListener("keyup", function (event) {
@@ -339,13 +395,16 @@ const weather7Day = {
           everyOtherDay += `
           <div id='weather__forecast'>
           <div class="weather__forecast__item">
-            <img src='icons/${day.weather[0].icon}.svg' alt="" class='d3 icon__small'>
-              <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
+               <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
                 <span class='divider'></span>
-            <div class="third__temp small__temp">${Math.round(day.temp.day)}</div>
+            <div class="third__temp small__temp"><img src='icons/${day.weather[0].icon}.svg' alt="" class='d3 icon__small'> | ${Math.round(day.temp.day)}°</div>
             <div class="min__max__wrapper">
-              <div class="small__min">${Math.round(day.temp.min)}</div>
-              <div class="small__max">${Math.round(day.temp.max)}</div>
+              <div class="small__max">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V4a.5.5 0 01.5-.5z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L8 3.707 5.354 6.354a.5.5 0 11-.708-.708l3-3z" clip-rule="evenodd"></path></svg>
+               | ${Math.round(day.temp.max)}°</div>
+              <div class="small__min">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 01.708 0L8 12.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M8 2.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V3a.5.5 0 01.5-.5z" clip-rule="evenodd"></path></svg>
+               | ${Math.round(day.temp.min)}°</div>
             </div>
             <div class='daily__desc'>
               <div class='daily__humidity'>
@@ -378,24 +437,14 @@ const weather7Day = {
         
         }
       })
-      
 
-      
       document.querySelector('.sunrise').innerHTML = `
       <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 32l-64 80h32v64h64v-64h32l-64-80zm-9 187v80h18v-80h-18zm-63.992 53.602l-16.631 6.886 15.309 36.955 16.628-6.886-15.306-36.955zm145.984 0l-15.306 36.955 16.628 6.886 15.309-36.955-16.63-6.886zM77.795 284.068l-12.727 12.727 56.569 56.568 12.726-12.726-56.568-56.569zm356.41 0l-56.568 56.569 12.726 12.726 56.569-56.568-12.727-12.727zM256 337.994a118.919 118.919 0 0 0-59.5 15.95c-34.215 19.754-56.177 55.048-59.129 94.056H374.63c-2.952-39.008-24.914-74.302-59.129-94.057a118.919 118.919 0 0 0-59.5-15.949zM66.488 387.377l-6.886 16.63 36.955 15.307 6.886-16.628-36.955-15.309zm379.024 0l-36.955 15.309 6.886 16.628 36.955-15.306-6.886-16.631zM24 466v18h464v-18H24z"></path></svg>
        | ${window.moment(sunrise*1000).format('HH:mm a')}`;
       document.querySelector('.sunset').innerHTML = `
       <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M247 27v80h18V27h-18zm-63.992 53.602l-16.631 6.886 15.309 36.955 16.628-6.886-15.306-36.955zm145.984 0l-15.306 36.955 16.628 6.886 15.309-36.955-16.63-6.886zM77.795 92.068l-12.727 12.727 56.569 56.568 12.726-12.726-56.568-56.569zm356.41 0l-56.568 56.569 12.726 12.726 56.569-56.568-12.727-12.727zM256 145.994a118.919 118.919 0 0 0-59.5 15.95c-34.215 19.754-56.177 55.048-59.129 94.056H374.63c-2.952-39.008-24.914-74.302-59.129-94.057a118.919 118.919 0 0 0-59.5-15.949zM66.488 195.377l-6.886 16.63 36.955 15.307 6.886-16.628-36.955-15.31zm379.024 0l-36.955 15.309 6.886 16.628 36.955-15.306-6.886-16.631zM24 274v18h464v-18H24zm200 62v64h-32l64 80 64-80h-32v-64h-64z"></path></svg>
       | ${window.moment(sunset*1000).format('HH:mm a')}`;
-
-      // document.querySelector('.city').innerText = `Weather in ${timezone}`;
-      // document.querySelector('.icon').src = `https://openweathermap.org/img/w/${icon}.png`
-      // document.querySelector('.description').innerText = description;
-      // document.querySelector('.temp').innerText = `${Math.round(temp)}°C`;
-      // document.querySelector('.humidity').innerText = `Humidity: ${humidity}%`;
-      // document.querySelector('.wind').innerText = `Wind Speed: ${speed}km/h`;
-      // document.querySelector('.weather').classList.remove('loading');
-      
+ 
       forecastItem.innerHTML = everyOtherDay;
     },
 
@@ -405,6 +454,20 @@ const weather7Day = {
     
 };
 
+
+// Carousel Glider.js
+
+window.addEventListener('load', function(){
+  new Glider(document.querySelector('.glider'), {
+    slidesToShow: 3,
+    slidesToScroll: 5,
+    draggable: true,
+    dots: '.dots',
+    arrows: {
+      prev: '.glider-prev',
+      next: '.glider-next'
+    }
+  })});
 
 
 
@@ -437,6 +500,18 @@ function errorCallback () {
   console.log('Error: Location not allowed. Weather cannot be determined by location. Please use the search bar or enable location services.');
  
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // Change background on button click
 

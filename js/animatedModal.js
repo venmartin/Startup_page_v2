@@ -15,10 +15,10 @@
         var settings = $.extend({
             modalTarget: modal.attr('href').replace('#',''), 
             position:'fixed', 
-            width:'60%', 
+            width:'80%', 
             height:'70%', 
             top:'15%', 
-            left:'20%', 
+            left:'10%', 
             zIndexIn: '9999',  
             zIndexOut: '-9999',  
             color: '#39BEB9', 
