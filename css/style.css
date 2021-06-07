@@ -41,6 +41,12 @@ body {
   
 }
 
+body button {
+  border: none;
+  outline: none;
+  background: none;
+}
+
 .background {
   position: fixed;
   height: 100vh;
@@ -92,7 +98,7 @@ Nav Links
   z-index: 2;
   height: 100vh;
   width: 0px;
-  background: #111;
+  background: rgba(17, 17, 17, 0.952);
   color: white;
   transition: 0.8s;
   transition-timing-function: cubic-bezier(0.245, 1.075, 0.830, 1.010);
@@ -116,16 +122,49 @@ Nav Links
 }
 
 .list__item {
-  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  padding: 14px;
   
 }
 
-.time12h, .time24h {
-  position: absolute;
-  background: none;
-  outline: none;
-  padding: 0;
+/* Toggle Button Position */
 
+.navitem__stretch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 16px;
+  margin-right: 16px;
+  width: 100%;
+}
+
+/* .navitem__stretch > *{
+  display: flex;
+  flex-basis: auto;
+  justify-content: space-between;
+  
+} */
+
+.clock__item {
+  padding-top: 4px;
+  padding-left: 2px;
+}
+
+.time-toggle {
+  padding-top: 4px;
+  margin-left: 50px;
+  width: 80px;
+  
+}
+
+.toggle-btn {
+  display: flex;
+  justify-content: center;
+  
+  width: 70px;
+  height: 30px;
+  margin-right: 20px;
 }
 
 .time12h {
@@ -911,3 +950,67 @@ Weather Pop up / Modal
 .glider-width {
   width: 100%;
 }
+
+
+/* Toggle Button : Credit */
+
+/* .center {
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+} */
+
+input[type="checkbox"] {
+  margin:10px;
+  position:relative;
+  width:40px;
+  height:10px;
+  -webkit-appearance: none;
+  background: linear-gradient(0deg, #333, #000);
+  outline: none;
+  border-radius: 20px;
+  box-shadow: 0 0 0 2px #353535, 0 0 0 1px #3e3e3e, inset 0 0 10px rgba(0,0,0,1);
+  transition: 0.5s;
+}
+
+input:checked[type="checkbox"]:nth-of-type(1) {
+  background: linear-gradient(0deg, #e67e22, #f39c12);
+  box-shadow: 0 0 0 2px #353535, 0 0 0 1px #3e3e3e, inset 0 0 10px rgba(0,0,0,1);
+  transition: .5s;
+}
+
+input[type="checkbox"]:before {
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:10px;
+  height:10px;
+  background: linear-gradient(0deg, #000, #6b6b6b);
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #232323;
+  transform: scale(.95,.94);
+  transition:.5s;
+}
+
+input:checked[type="checkbox"]:before {
+  left:30px;
+}
+
+input[type="checkbox"]:after{
+  content:'';
+  position:absolute;
+  top:calc(50% - 2px);
+  left:3px;
+  width:4px;
+  height:4px;
+  background: linear-gradient(0deg, #6b6b6b, #000);
+  border-radius: 50%;
+  transition:.5s;
+}
+
+input:checked[type="checkbox"]:after {
+  left: 33px;
+}
+

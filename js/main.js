@@ -17,8 +17,8 @@ $.fakeLoader({
 
 $("#demo01").animatedModal({
   color: '#a2a2a2',
-  animatedIn: 'backInUp',
-  animatedOut: 'zoomOutDown',
+  animatedIn: 'fadeInUp',
+  animatedOut: 'fadeOutUp',
   animationDuration: '1s',
   overflow: 'auto'
 });
@@ -73,6 +73,12 @@ const ampmTime = document.getElementById('ampm');
 
 const showAMorPM = true;
 
+// 24 Hour Time
+
+let is24Hour = false;
+const time12Hour = document.querySelector('.time12');
+const time24Hour = document.querySelector('.time24');
+
 // // This is to display the current time.
 
 function currentTime() {
@@ -81,7 +87,6 @@ function currentTime() {
       day = today.getDay(),
       date = today.getDate(),
       hour = today.getHours(),
-      hour24 = today.getHours(),
       mins = today.getMinutes();
 
 //    // This will set AM or PM
@@ -89,14 +94,34 @@ function currentTime() {
    const amPm = hour >= 12 ? 'PM' : 'AM';
 
 //    // 12hr format
-   hour = hour % 12 || 12;
+   
 
 //    // Output the time
 
+  if(is24Hour) {
    time.innerHTML = `${hour}<span>:</span>${addZero(mins)}`;
+   ampmTime.innerHTML = ``
+   setTimeout(currentTime, 1000);
+  
+  } else {
+    hour = hour % 12 || 12;
+    time.innerHTML = `${hour}<span>:</span>${addZero(mins)}`;
    ampmTime.innerHTML = `${showAMorPM ? amPm : ''}`;
    setTimeout(currentTime, 1000);
+  }
+
 }
+
+// Change 12 or 24 hour 
+
+let changeTime = function() {
+  is24Hour = !is24Hour;
+};
+
+document.querySelector('.timeChange').addEventListener('click', function(){ 
+  changeTime();
+})
+
 
 // // Function to add zero's to the minutes and seconds in single digits.
 
