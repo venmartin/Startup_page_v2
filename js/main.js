@@ -247,7 +247,6 @@ bingSearch: function  () {
 
 searchInput.duckDuckGo();
 
-// ddg.addEventListener('click', changeSearch(ddg))
 
 
 
