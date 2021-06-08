@@ -129,6 +129,129 @@ function addZero(num) {
   return (parseInt(num, 10) < 10 ? '0' : '') + num;
 }
 
+// Search Selector
+
+let ddg = document.querySelector('.duckduckgo');
+let google = document.querySelector('.google');
+let bing = document.querySelector('.bing');
+
+ddg.addEventListener('click', function() {
+  searchInput.duckDuckGo();
+  
+});
+
+google.addEventListener('click', function() {
+  searchInput.googleSearch();
+});
+
+bing.addEventListener('click', function() {
+  searchInput.bingSearch();
+});
+
+
+
+
+function changeSearch (engine) {
+  let searchBar = document.querySelector('.online-search')
+  searchBar.setAttribute('placeholder', `You are about to search on ${engine}!`);
+
+};
+
+
+searchInput = { 
+
+duckDuckGo: function () {
+  changeSearch('DuckDuckGo');
+  document.querySelector('.websr-btn').addEventListener('click', function () {
+    let onlineSearch = document.querySelector('.online-search');
+    let searchResult = onlineSearch.value;
+    window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
+    onlineSearch.value = '';
+  },
+
+  {
+    once: true
+  })
+  
+  document.querySelector('.online-search').addEventListener('keyup', function (event) {
+    if (event.key == 'Enter') {
+    let onlineSearch = document.querySelector('.online-search');
+    let searchResult = onlineSearch.value;
+    window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
+    onlineSearch.value = '';
+    }
+  },
+
+  {
+    once: true
+  })
+},
+
+googleSearch: function  () {
+  changeSearch('Google');
+  document.querySelector('.websr-btn').addEventListener('click', function () {
+    let onlineSearch = document.querySelector('.online-search');
+    let searchResult = onlineSearch.value;
+    window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
+    onlineSearch.value = '';
+  },
+
+  {
+    once: true
+  })
+  
+  document.querySelector('.online-search').addEventListener('keyup', function (event) {
+    if (event.key == 'Enter') {
+    let onlineSearch = document.querySelector('.online-search');
+    let searchResult = onlineSearch.value;
+    window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
+    onlineSearch.value = '';
+    }
+  },
+
+  {
+    once: true
+  })
+},
+
+bingSearch: function  () {
+  changeSearch('Bing');
+  document.querySelector('.websr-btn').addEventListener('click', function () {
+    let onlineSearch = document.querySelector('.online-search');
+    let searchResult = onlineSearch.value;
+    window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
+    onlineSearch.value = '';
+  },
+
+  {
+    once: true
+  })
+  
+  document.querySelector('.online-search').addEventListener('keyup', function (event) {
+    if (event.key == 'Enter') {
+    let onlineSearch = document.querySelector('.online-search');
+    let searchResult = onlineSearch.value;
+    window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
+    onlineSearch.value = '';
+    }
+  },
+
+  {
+    once: true
+  })
+},
+
+};
+
+// Default Search Engine
+
+searchInput.duckDuckGo();
+
+// ddg.addEventListener('click', changeSearch(ddg))
+
+
+
+
 // Set the background and greeting to the time of day.
 
 // function setBgGreeting () {
