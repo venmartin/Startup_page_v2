@@ -44,6 +44,74 @@ document.querySelector('.nav-menu').addEventListener('click', function() {
   
 })
 
+// Customization Menu Show or Hide
+
+document.querySelector('.customize-menu__btn').addEventListener('click', function () {
+  let customDrop = document.querySelector('.customize-menu__btn');
+
+  if (customDrop.classList) {
+    let customBox = document.querySelector('.customize__wrapper');
+    let customBtn = document.querySelector('.customize-menu__svg');
+    let visibleChange = document.getElementsByClassName('custom__hide__menu');
+    for (var i = 0; i < visibleChange.length; i++) {
+      visibleChange[i].classList.toggle('custom__open');
+    }
+
+    customBox.classList.toggle('customize__wrapper-open');
+    customBtn.classList.toggle('customize__svg-rotate')
+  }
+});
+
+
+// Move Clock top right
+
+document.querySelector('.time__pos__top').addEventListener('click', function () {
+  let timeBlock = document.querySelector('.time-container');
+  timeBlock.classList.add('clock__pos__top');
+});
+
+document.querySelector('.time__pos__bottom').addEventListener('click', function () {
+  let timeBlock = document.querySelector('.time-container');
+  timeBlock.classList.remove('clock__pos__top');
+});
+
+
+// Change Clock Size
+
+
+document.querySelector('.time__size__small').addEventListener('click', function () {
+  let defaultTime = document.querySelector('.time__size');
+  let defaultAmPm = document.querySelector('.ampm__size');
+  let defaultDate = document.querySelector('.date');
+  defaultTime.classList.add('small__time');
+  defaultAmPm.classList.add('small__ampm');
+  defaultTime.classList.remove('large__time');
+  defaultAmPm.classList.remove('large__ampm');
+  defaultDate.classList.remove('large__date');
+});
+
+document.querySelector('.time__size__medium').addEventListener('click', function () {
+  let defaultTime = document.querySelector('.time__size');
+  let defaultAmPm = document.querySelector('.ampm__size');
+  let defaultDate = document.querySelector('.date');
+  defaultTime.classList.remove('small__time');
+  defaultAmPm.classList.remove('small__ampm');
+  defaultTime.classList.remove('large__time');
+  defaultAmPm.classList.remove('large__ampm');
+  defaultDate.classList.remove('large__date');
+});
+
+document.querySelector('.time__size__large').addEventListener('click', function () {
+  let defaultTime = document.querySelector('.time__size');
+  let defaultAmPm = document.querySelector('.ampm__size');
+  let defaultDate = document.querySelector('.date');
+  defaultTime.classList.remove('small__time');
+  defaultTime.classList.add('large__time');
+  defaultAmPm.classList.add('large__ampm');
+  defaultDate.classList.add('large__date');
+
+});
+
 
 // Show Shortcut Menu and Dock Buttons
 
@@ -64,6 +132,17 @@ document.querySelector('.shortcut__menu').addEventListener('click', function () 
   }
 })
 
+
+//  Show hide Shorcuts Nav Menu
+
+document.querySelector('.shortcut-show-hide').addEventListener('click', function(){ 
+  let dockMenu = document.querySelector('.menu__container');
+  dockMenu.classList.toggle('hide__shortcuts');
+})
+
+
+
+
 // DOM Elements for time
 
 const time = document.getElementById('time');
@@ -81,6 +160,13 @@ const time24Hour = document.querySelector('.time24');
 
 // // This is to display the current time.
 
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const months = ["January","February","March","April","May","June","July",
+"August","September","October","November","December"];
+const dateElement = document.querySelector('.date__today');
+const dateElSmall = document.querySelector('.date');
+
+
 function currentTime() {
   let today = new Date(),
       month = today.getMonth(),
@@ -88,6 +174,10 @@ function currentTime() {
       date = today.getDate(),
       hour = today.getHours(),
       mins = today.getMinutes();
+
+
+  dateElement.innerHTML = days[day] + ', ' + date + ' ' + months[month];
+  dateElSmall.innerHTML = days[day] + ', ' + date + ' ' + months[month];
 
 //    // This will set AM or PM
 
@@ -129,7 +219,13 @@ function addZero(num) {
   return (parseInt(num, 10) < 10 ? '0' : '') + num;
 }
 
-// Search Selector
+
+
+/*
+
+Search Selector
+
+*/
 
 let ddg = document.querySelector('.duckduckgo');
 let google = document.querySelector('.google');
@@ -171,7 +267,8 @@ duckDuckGo: function () {
 
   {
     once: true
-  })
+  }
+  )
   
   document.querySelector('.online-search').addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
@@ -184,7 +281,8 @@ duckDuckGo: function () {
 
   {
     once: true
-  })
+  }
+  )
 },
 
 googleSearch: function  () {
@@ -198,7 +296,8 @@ googleSearch: function  () {
 
   {
     once: true
-  })
+  }
+  ),
   
   document.querySelector('.online-search').addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
@@ -225,7 +324,7 @@ bingSearch: function  () {
 
   {
     once: true
-  })
+  }),
   
   document.querySelector('.online-search').addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
@@ -234,18 +333,22 @@ bingSearch: function  () {
     window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
     onlineSearch.value = '';
     }
+    
   },
-
+  
+  
   {
     once: true
-  })
+  }
+  
+  )
 },
 
 };
 
 // Default Search Engine
 
-searchInput.duckDuckGo();
+// searchInput.duckDuckGo();
 
 
 
@@ -324,56 +427,102 @@ searchInput.duckDuckGo();
 const articleItem = document.getElementById('article__box');
 
 
+// NewsAPI Api Key: 5b56304e21824cd085a912a6de7952f5
+
 let newsArticles = {
 
 fetchNews: function() {
-  fetch("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=world&lang=en&country="
-    // + "AU"
-    + "&media=True", {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-key": "fcca3bccfemshc5d447449233745p17d6dcjsndda59961c6e2",
-      "x-rapidapi-host": "newscatcher.p.rapidapi.com"
-    }
-  })
-.then(response => response.json())
-// .catch(err => {
-// 	console.error(err);
-// })
-.then((data) => this.displayNews(data));
+  const newsApiKey = "5b56304e21824cd085a912a6de7952f5"
+  fetch("https://newsapi.org/v2/top-headlines?country="
+   + "au"
+   +"&apiKey="
+   + newsApiKey
+   )
+  .then(response => response.json())
+  .then((data) => console.log(data));
 
+  // this.displayNews(data)
 
   },
 
 
   displayNews: function (data) {
-    // const { articles } = data;
-    // const { summary, country, link, language, media, title, topic} = data.articles[0];
-
-
-
     let createArticle = ``;
     data.articles.forEach((article, index) => {
-      if (index == 0) {
-
-      } else {
+      // if (index == 0) {
+      // } else {
         createArticle += `
         <div id="article__box">
-          <div class="news__media__img"><img src='${article.media}' alt="" class='media__img'></div>
+          <div class="news__media__img"><img src='${article.urlToImage}' alt="" class='media__img'></div>
           <div class="news__title">${article.title}</div>
-          <div class="news__summary">${article.summary}</div>
+          <div class="news__summary">${article.description}</div>
           <div class="news__topic">${article.topic}</div>
           <div class="news__country">${article.country}</div>
-          <div class="original__source">${article.rights}</div>
-          <div class="original__link"><a href="${article.link}" target="_blank" rel="noopener no-referrer">Source</a></div>
+          <div class="original__source">${article.source.name}</div>
+          <div class="original__link"><a href="${article.url}" target="_blank" rel="noopener no-referrer">Source</a></div>
       </div>
         `
   } 
-  
-})
+),
   articleItem.innerHTML = createArticle;
 },
 };
+
+// OLD NEWS API
+
+// let newsArticles = {
+
+//   fetchNews: function() {
+//     fetch("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=world&lang=en&country="
+//       // + "AU"
+//       + "&media=True", {
+//       "method": "GET",
+//       "headers": {
+//         "x-rapidapi-key": "fcca3bccfemshc5d447449233745p17d6dcjsndda59961c6e2",
+//         "x-rapidapi-host": "newscatcher.p.rapidapi.com"
+//       }
+//     })
+//   .then(response => response.json())
+//   // .catch(err => {
+//   // 	console.error(err);
+//   // })
+//   .then((data) => this.displayNews(data));
+  
+  
+//     },
+  
+  
+//     displayNews: function (data) {
+//       // const { articles } = data;
+//       // const { summary, country, link, language, media, title, topic} = data.articles[0];
+  
+  
+  
+//       let createArticle = ``;
+//       data.articles.forEach((article, index) => {
+//         if (index == 0) {
+  
+//         } else {
+//           createArticle += `
+//           <div id="article__box">
+//             <div class="news__media__img"><img src='${article.media}' alt="" class='media__img'></div>
+//             <div class="news__title">${article.title}</div>
+//             <div class="news__summary">${article.summary}</div>
+//             <div class="news__topic">${article.topic}</div>
+//             <div class="news__country">${article.country}</div>
+//             <div class="original__source">${article.rights}</div>
+//             <div class="original__link"><a href="${article.link}" target="_blank" rel="noopener no-referrer">Source</a></div>
+//         </div>
+//           `
+//     } 
+    
+//   })
+//     articleItem.innerHTML = createArticle;
+//   },
+//   };
+
+
+
 
 // newsArticles.fetchNews();
 /*
