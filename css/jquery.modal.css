@@ -41,6 +41,7 @@
   -ms-box-shadow: 0 0 10px #000;
   box-shadow: 0 0 10px #000;
   text-align: left;
+  font-weight: bolder;
 }
 
 .modal a.close-modal {

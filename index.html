@@ -15,9 +15,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/tablet.css">
-  <link rel="stylesheet" href="css/phone.css">
-  <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="../css/fakeLoader.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
@@ -134,8 +131,7 @@
         </div>
 
         <li class="list__item news"><a href="#ex1" rel="modal:open">News</a></li>
-        <li class="list__item favourites__menu">Favourites</li>
-        <li class="list__item">Search Icons</li>
+        <li class="list__item favourites__menu">Favourites Coming Soon</li>
       </ul>
     </div>
 
@@ -145,13 +141,17 @@
   <!-- Modal HTML embedded directly into document -->
   <div id="ex1" class="modal">
     <div id="article__box">
-      <!-- <div class="news__media__img"><img src='' alt="" class='media__img'></div>
+      <!-- <div class="article__items">
+      <div class="news__media__img"><img src='' alt="" class='media__img'></div>
     <div class="news__title"></div>
     <div class="news__summary"></div>
-    <div class="news__topic"></div>
-    <div class="news__country"></div>
-    <div class="original__source"></div>
-     -->
+    <div class="news__info">
+      <div class="news__topic"></div>
+      <div class="news__country"></div>
+      <div class="original__source"></div>
+      <div class="original__link"><a href="" target="" rel="noopener no-referrer"></a></div>
+  </div>
+</div> -->
     </div>
     <a href="#" rel="modal:close">Close</a>
   </div>
@@ -219,13 +219,15 @@
     <div class="menu__container">
       <div class="shortcut__menu">
         <span class='menu__drop'>
-          <span class='span-dock'>Dock</span>
-          <svg class="shortcut-menu__btn" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
+          <svg class='shortcut-menu__btn' stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg>
+          <span class='span-dock'>Shortcuts</span>
+          
+          <!-- <svg class="shortcut-menu__btn" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"
             height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M9.5 13a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
               clip-rule="evenodd"></path>
-          </svg>
+          </svg> -->
         </span>
       </div>
     </div>
@@ -459,7 +461,8 @@
   <script src="js/animatedModal.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script src="js/glider.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/dist/bundle.js"></script>
+  <!-- <script src="js/main.js"></script> -->
 
 
   <script>

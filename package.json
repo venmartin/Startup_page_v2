@@ -1,0 +1,27 @@
+{
+  "name": "startup_page_v2",
+  "version": "0.1.2",
+  "description": "Start Up Page for Google Chrome Browsers",
+  "main": "main.js",
+  "dependencies": {
+    "embla-carousel": "^4.5.3",
+    "jq-fakeloader": "^2.0.1",
+    "uniq": "^1.0.1",
+    "watchify": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch" : "npx watchify js/src/main.js -o js/dist/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venmartin/Startup_page_v2.git"
+  },
+  "author": "Ven Martin (Adam)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venmartin/Startup_page_v2/issues"
+  },
+  "homepage": "https://github.com/venmartin/Startup_page_v2#readme"
+}
