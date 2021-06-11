@@ -9,9 +9,9 @@ window.addEventListener('load', function () {
 // Loader for page on start
 
 $.fakeLoader({
-  timeToHide: 1,
+  timeToHide: 1500,
   bgColor: "#376fad",
-  spinner: "spinner3"
+  spinner: "spinner5"
 });
 
 
