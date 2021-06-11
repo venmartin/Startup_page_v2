@@ -360,6 +360,12 @@ Time / Clock & date
   height: 100%;
   width: 100%;
   right: 0px;
+  transition: 0.5s;
+}
+
+.card-time__hide {
+  opacity: 0;
+  transition: 0.5s;
 }
 
 .time-display {
@@ -416,12 +422,17 @@ Time / Clock & date
 }
 
 .small__time {
+  position: relative;
+  top: 50px;
   margin-top: 20px;
   font-size: 24px;
   height: 25px;
+  
 }
 
 .small__ampm {
+  position: relative;
+  top: 50px;
   height: 28px;
   width: 200px;
 }
@@ -919,8 +930,12 @@ News
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  transition: 0.5s;
+}
 
+.weather-content__hide {
+  opacity: 0;
+  transition: 0.5s;
 }
 
 .icon {

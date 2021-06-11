@@ -46,6 +46,19 @@ document.querySelector('.nav-menu').addEventListener('click', function() {
   
 })
 
+// Show / Hide Weather and Time
+
+document.querySelector(".show__weather").addEventListener('click', function () {
+  let weatherContent = document.querySelector(".weather-content");
+  weatherContent.classList.toggle('weather-content__hide');
+});
+
+document.querySelector(".show__time").addEventListener('click', function () {
+  let timeContent = document.querySelector('.card-time');
+  timeContent.classList.toggle('card-time__hide');
+});
+
+
 // Customization Menu Show or Hide
 
 document.querySelector('.customize-menu__btn').addEventListener('click', function () {
