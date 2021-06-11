@@ -318,6 +318,7 @@ duckDuckGo: function () {
   )
 },
   duckDuckGoEnter: function () {
+    changeSearch('DuckDuckGo');
   document.querySelector('.ddgSearch').addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
     let onlineSearch = document.querySelector('.ddgSearch');
@@ -350,6 +351,7 @@ googleSearch: function  () {
 
   
   googleEnter: function () {
+    changeSearch('Google');
   document.querySelector('.googleSearch').addEventListener('keyup', function (event) {
     changeSearch('Google');
     if (event.key == 'Enter') {
@@ -381,6 +383,7 @@ bingSearch: function  () {
   )
 },
   bingEnter: function () {
+    changeSearch('Bing');
   document.querySelector('.bingSearch').addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
     let onlineSearch = document.querySelector('.bingSearch');
