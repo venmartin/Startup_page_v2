@@ -11,7 +11,7 @@ window.addEventListener('load', function () {
 $.fakeLoader({
   timeToHide: 1500,
   bgColor: "#376fad",
-  spinner: "spinner5"
+  spinner: "spinner3"
 });
 
 

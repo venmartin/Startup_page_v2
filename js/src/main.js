@@ -6,10 +6,9 @@ window.addEventListener('load', function () {
 })
 
 // Loader for page on start
-tetstst 
 
 $.fakeLoader({
-  timeToHide: 5000,
+  timeToHide: 1500,
   bgColor: "#376fad",
   spinner: "spinner3"
 });
