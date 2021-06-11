@@ -6,13 +6,14 @@
   "dependencies": {
     "embla-carousel": "^4.5.3",
     "jq-fakeloader": "^2.0.1",
+    "jquery": "^3.6.0",
     "uniq": "^1.0.1",
     "watchify": "^4.0.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch" : "npx watchify js/src/main.js -o js/dist/bundle.js"
+    "watch": "npx watchify js/src/main.js -o js/dist/bundle.js"
   },
   "repository": {
     "type": "git",
