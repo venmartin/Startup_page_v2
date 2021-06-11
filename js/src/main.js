@@ -248,17 +248,42 @@ let google = document.querySelector('.google');
 let bing = document.querySelector('.bing');
 
 ddg.addEventListener('click', function() {
+  let onlineSearch = document.querySelector('.online-search');
+  onlineSearch.classList.add('ddgSearch');
+  onlineSearch.classList.remove('bingSearch');
+  onlineSearch.classList.remove('googleSearch');
   searchInput.duckDuckGo();
+  searchInput.duckDuckGoEnter();
   
+},
+{
+  once: true
 });
 
 google.addEventListener('click', function() {
+  let onlineSearch = document.querySelector('.online-search');
+  onlineSearch.classList.add('googleSearch');
+  onlineSearch.classList.remove('ddgSearch');
+  onlineSearch.classList.remove('bingSearch');
   searchInput.googleSearch();
+  searchInput.googleEnter();
+},
+{
+  once: true
 });
 
 bing.addEventListener('click', function() {
+  let onlineSearch = document.querySelector('.online-search');
+  onlineSearch.classList.add('bingSearch');
+  onlineSearch.classList.remove('ddgSearch');
+  onlineSearch.classList.remove('googleSearch');
   searchInput.bingSearch();
-});
+  searchInput.bingEnter();
+},
+{
+  once: true
+}
+);
 
 
 /* 
@@ -280,22 +305,56 @@ searchInput = {
 duckDuckGo: function () {
   changeSearch('DuckDuckGo');
   document.querySelector('.websr-btn').addEventListener('click', function () {
-    let onlineSearch = document.querySelector('.online-search');
+    let onlineSearch = document.querySelector('.ddgSearch');
     let searchResult = onlineSearch.value;
     window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
     onlineSearch.value = '';
   },
 
-  {
-    once: true
-  }
+  // {
+  //   once: true
+  // }
   )
-  
-  document.querySelector('.online-search').addEventListener('keyup', function (event) {
+},
+  duckDuckGoEnter: function () {
+  document.querySelector('.ddgSearch').addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
-    let onlineSearch = document.querySelector('.online-search');
+    let onlineSearch = document.querySelector('.ddgSearch');
     let searchResult = onlineSearch.value;
     window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
+    onlineSearch.value = '';
+    }
+  },
+
+  // {
+  //   once: true
+  // }
+  )},
+
+
+googleSearch: function  () {
+  changeSearch('Google');
+  document.querySelector('.websr-btn').addEventListener('click', function () {
+    let onlineSearch = document.querySelector('.googleSearch');
+    let searchResult = onlineSearch.value;
+    window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
+    onlineSearch.value = '';
+  },
+
+  // {
+  //   once: true
+  // }
+  )
+},
+
+  
+  googleEnter: function () {
+  document.querySelector('.googleSearch').addEventListener('keyup', function (event) {
+    changeSearch('Google');
+    if (event.key == 'Enter') {
+    let onlineSearch = document.querySelector('.googleSearch');
+    let searchResult = onlineSearch.value;
+    window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
     onlineSearch.value = '';
     }
   },
@@ -306,52 +365,24 @@ duckDuckGo: function () {
   )
 },
 
-googleSearch: function  () {
-  changeSearch('Google');
-  document.querySelector('.websr-btn').addEventListener('click', function () {
-    let onlineSearch = document.querySelector('.online-search');
-    let searchResult = onlineSearch.value;
-    window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
-    onlineSearch.value = '';
-  },
-
-  {
-    once: true
-  }
-  ),
-  
-  document.querySelector('.online-search').addEventListener('keyup', function (event) {
-    changeSearch('Google');
-    if (event.key == 'Enter') {
-    let onlineSearch = document.querySelector('.online-search');
-    let searchResult = onlineSearch.value;
-    window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
-    onlineSearch.value = '';
-    }
-  },
-
-  {
-    once: true
-  }
-  )
-},
-
 bingSearch: function  () {
   changeSearch('Bing');
   document.querySelector('.websr-btn').addEventListener('click', function () {
-    let onlineSearch = document.querySelector('.online-search');
+    let onlineSearch = document.querySelector('.bingSearch');
     let searchResult = onlineSearch.value;
     window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
     onlineSearch.value = '';
   },
 
-  {
-    once: true
-  }),
-  
-  document.querySelector('.online-search').addEventListener('keyup', function (event) {
+  // {
+  //   once: true
+  // }
+  )
+},
+  bingEnter: function () {
+  document.querySelector('.bingSearch').addEventListener('keyup', function (event) {
     if (event.key == 'Enter') {
-    let onlineSearch = document.querySelector('.online-search');
+    let onlineSearch = document.querySelector('.bingSearch');
     let searchResult = onlineSearch.value;
     window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
     onlineSearch.value = '';
@@ -360,14 +391,14 @@ bingSearch: function  () {
   },
   
   
-  {
-    once: true
-  }
+  // {
+  //   once: true
+  // }
   
   )
-},
-
+}
 };
+
 
 // Default Search Engine
 
