@@ -51,7 +51,7 @@ body button {
   position: fixed;
   height: 100vh;
   width: 100vw;
-  background-image: url('/img/morning.jpg');
+  background-image: url('/img/afternoon.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -467,9 +467,11 @@ Online Search
   
 }
 
-.duckduckgo, .google, .yahoo {
+.duckduckgo, .google, .bing {
   display: inline-block;
   padding: 0px 10px 0px 10px;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
 }
 
 .search-logos svg {
@@ -492,7 +494,7 @@ Online Search
 
 .online-search {
   position: relative;
-  border-color: black;
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 18px;
   width: 400px;
   height: 25px;
