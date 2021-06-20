@@ -405,7 +405,6 @@ Time / Clock & date
   height: 55px;
   width: 140px;
   color: white;
-  align-items: ;
   justify-content: flex-end;
   font-size: 16px;
 }
@@ -739,9 +738,6 @@ Shortcuts
   transition: 1s;
 }
 
-.slack__icon {
-}
-
 .slack__overlap {
   position: absolute;
   top: 25%;
@@ -754,10 +750,6 @@ Shortcuts
 .slack__overlap svg {
   height: 30px;
   width: 30px;
-}
-
-.slack__overlap:hover {
-  
 }
 
 .slack__under{
@@ -813,7 +805,6 @@ News
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.301);
   border-radius: 10px;
-  background-color:
 }
 
 .news__media__img {
@@ -870,16 +861,6 @@ News
   color: rgb(255, 255, 255);
   font-style: italic;
 }
-
-.news__topic {
-  
-}
-
-.news__country {
-
-}
-
-
 
 /*
 
@@ -994,10 +975,6 @@ News
 Weather Pop up / Modal
 
 */
-
-.modal-content {
-
-}
 
 .modal__bg__img {
   height: 100%;
