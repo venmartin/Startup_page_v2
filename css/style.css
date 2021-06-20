@@ -542,10 +542,14 @@ Online Search
   width: 35px;
 }
 
-.search-icon {
-  pointer-events: none;
+.search__icon {
+  transition: 0.5s;
 }
 
+.search__icon:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
+}
 /* 
 
 Shortcuts 
