@@ -767,6 +767,8 @@ function getGeolocation () {
   }
 };
 
+document.querySelector('.location__btn').addEventListener('click', getGeolocation);
+
 function successCallback(position) {
   const {latitude, longitude} = position.coords;
   let shortLat = Math.round(latitude * 100) / 100;

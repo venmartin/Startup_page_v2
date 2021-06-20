@@ -540,6 +540,7 @@ Online Search
   outline: none;
   height: 100%;
   width: 35px;
+  cursor: pointer;
 }
 
 .search__icon {
@@ -967,6 +968,10 @@ News
   color: #fff;
 }
 
+#demo01 {
+  cursor: pointer;
+}
+
 .location__btn {
   position: absolute;
   left: 10px;
@@ -975,6 +980,7 @@ News
   background: none;
   outline: none;
   z-index: 1;
+  cursor: pointer;
 }
 
 .location__btn svg {
@@ -1102,6 +1108,8 @@ Weather Pop up / Modal
   background: transparent;
   outline: none;
   transition: 0.3s;
+  font-weight: bolder;
+  color: white;
   
   
 }
