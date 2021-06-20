@@ -490,7 +490,8 @@ Online Search
   padding: 5px;
   margin: 0px 5px 0px 5px;
   border-color: black;
-  border-style: ins;
+  border-style: none;
+  pointer-events: none;
 }
 
 .websearch {
@@ -537,8 +538,12 @@ Online Search
   border: none;
   background: none;
   outline: none;
-  height: 25px;
-  width: 25px;
+  height: 100%;
+  width: 35px;
+}
+
+.search-icon {
+  pointer-events: none;
 }
 
 /* 

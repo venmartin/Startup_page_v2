@@ -248,50 +248,115 @@ let ddg = document.querySelector('.duckduckgo');
 let google = document.querySelector('.google');
 let bing = document.querySelector('.bing');
 
-ddg.addEventListener('click', function() {
-  let onlineSearch = document.querySelector('.online-search');
-  onlineSearch.classList.add('ddgSearch');
-  onlineSearch.classList.remove('bingSearch');
-  onlineSearch.classList.remove('googleSearch');
-  searchInput.duckDuckGo();
-  searchInput.duckDuckGoEnter();
-  
-},
-{
-  once: true
-});
 
-google.addEventListener('click', function() {
-  let onlineSearch = document.querySelector('.online-search');
-  onlineSearch.classList.add('googleSearch');
-  onlineSearch.classList.remove('ddgSearch');
-  onlineSearch.classList.remove('bingSearch');
-  searchInput.googleSearch();
-  searchInput.googleEnter();
-},
-{
-  once: true
-});
+function switchSearch (event) {
+  let onlineSearchBtn = document.querySelector('.websr-btn');
+  let onlineSearchBar = document.getElementById('search__bar');
+  if (event.target == ddg) {
+    changeSearch("DuckDuckGo");
+    
+        // Search Bar Change
 
-bing.addEventListener('click', function() {
-  let onlineSearch = document.querySelector('.online-search');
-  onlineSearch.classList.add('bingSearch');
-  onlineSearch.classList.remove('ddgSearch');
-  onlineSearch.classList.remove('googleSearch');
-  searchInput.bingSearch();
-  searchInput.bingEnter();
-},
-{
-  once: true
+        onlineSearchBar.classList.add('ddg-search-bar');
+        onlineSearchBar.classList.remove('google-search-bar');
+        onlineSearchBar.classList.remove('bing-search-bar');
+        
+
+        // Search Button Change-bar
+        onlineSearchBtn.classList.add('ddg-search');
+        onlineSearchBtn.classList.remove('google-search');
+        onlineSearchBtn.classList.remove('bing-search');
+    console.log("ddg")
+  }
+  if (event.target == google) {
+    changeSearch("Google");
+
+        // Search Bar Change
+
+        onlineSearchBar.classList.remove('ddg-search-bar');
+        onlineSearchBar.classList.add('google-search-bar');
+        onlineSearchBar.classList.remove('bing-search-bar');
+        
+    
+        // Search Button Change
+        onlineSearchBtn.classList.remove('ddg-search');
+        onlineSearchBtn.classList.add('google-search');
+        onlineSearchBtn.classList.remove('bing-search');
+    console.log("google")
+  }
+  if (event.target == bing) {
+    changeSearch("Bing");
+
+        // Search Bar Change
+
+        onlineSearchBar.classList.remove('ddg-search-bar');
+        onlineSearchBar.classList.remove('google-search-bar');
+        onlineSearchBar.classList.add('bing-search-bar');
+        
+    
+        // Search Button Change
+        onlineSearchBtn.classList.remove('ddg-search');
+        onlineSearchBtn.classList.remove('google-search');
+        onlineSearchBtn.classList.add('bing-search');
+    console.log("bing")
+  }
 }
-);
+  
+// Event Listeners for Search Bar
+
+document.addEventListener('click', switchSearch);
+document.querySelector('.online-search').addEventListener('keyup', function (event) {
+  let onlineSearch = document.querySelector('.online-search');
+  let ddgSearch = document.querySelector('.ddg-search-bar');
+  let googleSearch = document.querySelector('.google-search-bar');
+  let bingSearch = document.querySelector('.bing-search-bar');
+  let searchResult = onlineSearch.value;
+
+  if (event.key == 'Enter' && ddgSearch) {
+
+    window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
+    onlineSearch.value = '';
+    }
+  
+  if (event.key == 'Enter' && googleSearch) {
+      window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
+      onlineSearch.value = '';
+    }
+    
+  if (event.key == 'Enter' && bingSearch) {
+      window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
+      onlineSearch.value = '';
+
+  }
+});
 
 
-/* 
-  - Change functions to create a new input replacing the default input
-  - Add within eventlistener's to add new input and remove other search inputs.
 
-*/
+document.querySelector('.websr-btn').addEventListener('click', function (event) {
+  let onlineSearch = document.querySelector('.online-search');
+  let ddgSearch = document.querySelector('.ddg-search');
+  let googleSearch = document.querySelector('.google-search');
+  let bingSearch = document.querySelector('.bing-search');
+  let searchResult = onlineSearch.value;
+  if (event.target && ddgSearch) {
+    
+    window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
+    onlineSearch.value = '';
+    }
+  
+  if (event.target && googleSearch) {
+      window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
+      onlineSearch.value = '';
+    }
+    
+  if (event.target && bingSearch) {
+      window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
+      onlineSearch.value = '';
+
+  }
+});
+
+// Change the search location
 
 function changeSearch (engine) {
   let searchBar = document.querySelector('.online-search')
@@ -300,108 +365,6 @@ function changeSearch (engine) {
 };
 
 
-
-searchInput = { 
-
-duckDuckGo: function () {
-  changeSearch('DuckDuckGo');
-  document.querySelector('.websr-btn').addEventListener('click', function () {
-    let onlineSearch = document.querySelector('.ddgSearch');
-    let searchResult = onlineSearch.value;
-    window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
-    onlineSearch.value = '';
-  },
-
-  // {
-  //   once: true
-  // }
-  )
-},
-  duckDuckGoEnter: function () {
-    changeSearch('DuckDuckGo');
-  document.querySelector('.ddgSearch').addEventListener('keyup', function (event) {
-    if (event.key == 'Enter') {
-    let onlineSearch = document.querySelector('.ddgSearch');
-    let searchResult = onlineSearch.value;
-    window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
-    onlineSearch.value = '';
-    }
-  },
-
-  // {
-  //   once: true
-  // }
-  )},
-
-
-googleSearch: function  () {
-  changeSearch('Google');
-  document.querySelector('.websr-btn').addEventListener('click', function () {
-    let onlineSearch = document.querySelector('.googleSearch');
-    let searchResult = onlineSearch.value;
-    window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
-    onlineSearch.value = '';
-  },
-
-  // {
-  //   once: true
-  // }
-  )
-},
-
-  
-  googleEnter: function () {
-    changeSearch('Google');
-  document.querySelector('.googleSearch').addEventListener('keyup', function (event) {
-    changeSearch('Google');
-    if (event.key == 'Enter') {
-    let onlineSearch = document.querySelector('.googleSearch');
-    let searchResult = onlineSearch.value;
-    window.open(`https://www.google.com/search?q=${searchResult}`, "_blank");
-    onlineSearch.value = '';
-    }
-  },
-
-  // {
-  //   once: true
-  // }
-  )
-},
-
-bingSearch: function  () {
-  changeSearch('Bing');
-  document.querySelector('.websr-btn').addEventListener('click', function () {
-    let onlineSearch = document.querySelector('.bingSearch');
-    let searchResult = onlineSearch.value;
-    window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
-    onlineSearch.value = '';
-  },
-
-  // {
-  //   once: true
-  // }
-  )
-},
-  bingEnter: function () {
-    changeSearch('Bing');
-  document.querySelector('.bingSearch').addEventListener('keyup', function (event) {
-    if (event.key == 'Enter') {
-    let onlineSearch = document.querySelector('.bingSearch');
-    let searchResult = onlineSearch.value;
-    window.open(`https://www.bing.com/search?q=${searchResult}`, "_blank");
-    onlineSearch.value = '';
-    }
-    
-  },
-  
-  
-  // {
-  //   once: true
-  // }
-  
-  )
-}
-};
 
 
 // Default Search Engine
