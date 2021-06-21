@@ -474,8 +474,7 @@ let newsArticles = {
     displayNews: function (data) {
       // const { articles } = data;
       // const { summary, country, link, language, media, title, topic} = data.articles[0];
-  
-  
+
   
       let createArticle = ``;
       data.articles.forEach((article, index) => {
@@ -502,9 +501,17 @@ let newsArticles = {
   })
     articleItem.innerHTML = createArticle;
   },
-  };
+};
 
   articleItem.addEventListener('click', newsArticles.fetchNews());
+  $('#news-tab').click(function(event) {
+    $(this).modal({
+      fadeDuration: 800,
+      fadeDelay: 250
+    });
+    return false;
+  });
+
 
 // newsArticles.fetchNews();
 
@@ -766,6 +773,9 @@ function getGeolocation () {
   }
 };
 
+
+
+
 document.querySelector('.location__btn').addEventListener('click', getGeolocation);
 
 function successCallback(position) {
@@ -780,9 +790,14 @@ function successCallback(position) {
 }
 
 function errorCallback () {
+  $('#location-modal').modal({
+    fadeDuration: 500,
+    fadeDelay: 0.50
+  });
   console.log('Error: Location not allowed. Weather cannot be determined by location. Please use the search bar or enable location services.');
  
 }
+
 
 
 

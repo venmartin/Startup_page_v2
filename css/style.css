@@ -73,6 +73,13 @@ header {
   display: flex;
 }
 
+.error-modal {
+  display: flex;
+  align-items: center; 
+  font-weight: bolder;
+  padding: 15px;
+}
+
 .nav-menu {
   width: var(--header-height);
   flex-shrink: 0;
@@ -983,6 +990,7 @@ Weather Pop up / Modal
   background-repeat: no-repeat;
   background-position: center;
   transition: 1s;
+  background-image: url('../img/01d.jpg');
   
 
 }
