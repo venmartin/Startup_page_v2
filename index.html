@@ -20,7 +20,11 @@
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
   <link rel="stylesheet" href="css/jquery.modal.css">
   <link rel="stylesheet" type="text/css" href="css/glider.css">
-  <title>Welcome</title>
+  <link rel="stylesheet" href="css/splide.min.css">
+  <!-- <link rel="stylesheet" href="css/splide-core.min.css"> -->
+
+
+  <title>Startup Page v2.0</title>
 </head>
 
 <body class='preload background'>
@@ -53,7 +57,9 @@
   <div class="nav">
     <div class="nav-items">
       <ul class="list-items">
-        <li class="list__item shortcut__item">Shortcuts
+        <li class="list__item shortcut__item">
+          <svg class="shortcut__icon" stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16.1925 7.70711C15.8019 7.31658 15.1688 7.31658 14.7782 7.70711L7.70718 14.7782C7.31665 15.1687 7.31665 15.8019 7.70718 16.1924C8.0977 16.5829 8.73087 16.5829 9.12139 16.1924L16.1925 9.12132C16.583 8.7308 16.583 8.09763 16.1925 7.70711Z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M3 6C3 4.34315 4.34315 3 6 3H18C19.6569 3 21 4.34315 21 6V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6ZM6 5H18C18.5523 5 19 5.44772 19 6V18C19 18.5523 18.5523 19 18 19H6C5.44772 19 5 18.5523 5 18V6C5 5.44772 5.44772 5 6 5Z" fill="currentColor"></path></svg>
+          <span class="shortcut__text">Shortcuts</span>
           <div class="toggle-btn">
             <button class="center">
               <input class="shortcut-show-hide" type="checkbox" name="">
@@ -63,18 +69,21 @@
         </li>
         <div class="navitem__stretch">
           <li class="list__item">
+            <div class="clock__box">
+            <div class='clock__icon'><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm8-7A8 8 0 110 8a8 8 0 0116 0z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M7.5 3a.5.5 0 01.5.5v5.21l3.248 1.856a.5.5 0 01-.496.868l-3.5-2A.5.5 0 017 9V3.5a.5.5 0 01.5-.5z" clip-rule="evenodd"></path></svg></div>
             <spam class="clock__item">Clock</spam>
             <div class="time-toggle">12H | 24H</div>
             <div class="toggle-btn">
               <button class="center">
                 <input class="timeChange" type="checkbox" name="">
               </button>
-
+              </div>
             </div>
           </li>
         </div>
         <li class="list__item customization__menu">
-          <span>Customization</span>
+          <span class="customize__span"><svg class="customize__icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 11h6c.553 0 1-.448 1-1V4c0-.552-.447-1-1-1H4C3.447 3 3 3.448 3 4v6C3 10.552 3.447 11 4 11zM5 5h4v4H5V5zM20 3h-6c-.553 0-1 .448-1 1v6c0 .552.447 1 1 1h6c.553 0 1-.448 1-1V4C21 3.448 20.553 3 20 3zM19 9h-4V5h4V9zM10 21c.553 0 1-.447 1-1v-6c0-.553-.447-1-1-1H4c-.553 0-1 .447-1 1v6c0 .553.447 1 1 1H10zM5 15h4v4H5V15zM18 14L16 14 16 16 14 16 14 18 16 18 16 20 18 20 18 18 20 18 20 16 18 16z"></path></svg>
+            Customization</span>
           <button class="customize-menu__btn">
             <svg class="customize-menu__svg" stroke="currentColor" fill="currentColor" stroke-width="0"
               viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -168,8 +177,14 @@
           <span class='line__divider'></span>
         </div>
 
-        <li class="list__item news"><a id='news-tab' href="#ex1" rel="modal:open">News</a></li>
-        <li class="list__item favourites__menu">Favourites Coming Soon</li>
+        <li class="list__item news"><a id='news-tab' href="#ex1" rel="modal:open">
+          <span class="news__span">
+            <svg class="news__icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19.875,3H4.125C2.953,3,2,3.897,2,5v14c0,1.103,0.953,2,2.125,2h15.75C21.047,21,22,20.103,22,19V5 C22,3.897,21.047,3,19.875,3z M19.875,19H4.125c-0.057,0-0.096-0.016-0.113-0.016c-0.007,0-0.011,0.002-0.012,0.008L3.988,5.046 C3.995,5.036,4.04,5,4.125,5h15.75C19.954,5.001,19.997,5.028,20,5.008l0.012,13.946C20.005,18.964,19.96,19,19.875,19z"></path><path d="M6 7H12V13H6zM13 15L6 15 6 17 13 17 14 17 18 17 18 15 14 15zM14 11H18V13H14zM14 7H18V9H14z"></path></svg>
+          News</span></a></li>
+        <li class="list__item backgrounds__menu">
+          <span class="background__span">
+            <svg class="background__icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19,3H5C3.897,3,3,3.897,3,5v14c0,1.103,0.897,2,2,2h14c1.103,0,2-0.897,2-2V5C21,3.897,20.103,3,19,3z M5,19V5h14 l0.002,14H5z"></path><path d="M10 14L9 13 6 17 18 17 13 10z"></path></svg>
+            Background Picker</span></li>
       </ul>
     </div>
 
@@ -521,6 +536,7 @@
   <script src="js/animatedModal.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script src="js/glider.js"></script>
+  <script src="js/splide.js"></script>
   <script src="js/dist/bundle.js"></script>
   <!-- <script src="js/main.js"></script> -->
 

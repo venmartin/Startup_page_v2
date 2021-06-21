@@ -51,7 +51,7 @@ body button {
   position: fixed;
   height: 100vh;
   width: 100vw;
-  background-image: url('../img/afternoon.jpg');
+  background-image: url('../img/default_bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -146,8 +146,7 @@ Nav Links
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-left: 16px;
-  margin-right: 16px;
+  align-items: center;
   width: 100%;
 }
 
@@ -157,12 +156,24 @@ Nav Links
   justify-content: space-between;
   
 } */
-
 .shortcut__item {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   align-items: center;
+  justify-content: flex-start;
+}
+
+.shortcut__icon {
+  display: flex;
+  justify-content: flex-start;
+  padding-right: 8px;
+  height: 18px;
+  width: 18px;
+  
+}
+
+.shortcut__text {
+  width: 115px;
 }
 
 .shortcut-show-hide {
@@ -180,8 +191,30 @@ Nav Links
 
 .clock__item {
   padding-top: 4px;
-  width: 50px;
-  margin-left: -17px;
+  /* margin-left: -17px; */
+
+}
+
+.clock__icon {
+  display: flex;
+  align-items: center;
+  width: 25px;
+  height: 90%;
+}
+
+.clock__box {
+  display: flex;
+  width: 100%;
+
+}
+
+.customize__span {
+  display: flex;
+  align-items: center;
+}
+
+.customize__icon {
+  padding-right: 10px;
 }
 
 .time-toggle {
@@ -341,6 +374,25 @@ Nav Links
   text-decoration: none;
   color: white;
 
+}
+
+.news__span {
+  display: flex;
+  align-items: center;
+
+}
+
+.news__icon {
+  padding-right: 10px;
+}
+
+.background__span {
+  display: flex;
+  align-items: center;
+}
+
+.background__icon {
+  padding-right: 10px;
 }
 
 
@@ -528,12 +580,13 @@ Online Search
 }
 
 .online-search::placeholder {
-  color: black;
+  color: rgb(0, 0, 0);
   font-style: italic;
+  font-weight: bolder;
 }
 
 .online-search:hover {
-  background: #ffffff9f;
+  background: #ffffff69;
   transition: 0.2s;
 }
 
@@ -896,6 +949,9 @@ News
   transition-timing-function: cubic-bezier(0.245, 1.075, 0.830, 1.010);
 }
 
+button {
+  cursor: pointer;
+}
 
 .weather-modal {
   position: absolute;
