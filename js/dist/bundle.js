@@ -365,87 +365,6 @@ function changeSearch (engine) {
 };
 
 
-
-
-// Default Search Engine
-
-// searchInput.duckDuckGo();
-// document.querySelector('.online-search').removeEventListener('keyup', searchInput.duckDuckGo());
-// document.querySelector('.online-search').removeEventListener('keyup', searchInput.bingSearch());
-// document.querySelector('.online-search').removeEventListener('keyup', searchInput.googleSearch());
-
-
-
-
-// Set the background and greeting to the time of day.
-
-// function setBgGreeting () {
-//   let today = new Date(),
-//     hour = today.getHours();
-
-//     if(hour < 12) {
-// //       // Morning
-      
-//       document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?sunrise')";
-//       document.body.style.color = 'white';
-//       greeting.textContent = 'Good Morning';
-//     } else if (hour < 18) {
-// //       // Afternoon
-      
-//       document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?afternoon,landscape')";      
-//       greeting.textContent = 'Good Afternoon'; 
-//       document.body.style.color = 'white';
-      
-//     } else {
-      
-// //       // Evening
-      
-//       document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?night')";
-//       greeting.textContent = 'Good Evening';
-//       document.body.style.color = 'white';
-//     }
-// }
-
-// // Get the name of user
-
-// function getName () {
-//   if(localStorage.getItem('userName') === null) {
-//     userName.textContent = "[Enter Your Name]";
-//   } else {
-//     userName.textContent = localStorage.getItem('userName');
-//   }
-//   // userName.textContent = "Name"
-// }
-
-
-// // Set the name of the user
-
-// function setName(e) {
-//   if (e.key == 'Enter') {
-//     // Check if ENTER is pressed.
-//     // if (e.which == 13 || e.keyCode == 13) {
-//       localStorage.setItem('userName', e.target.innerText);
-//       userName.blur();
-//       var brs = document.getElementsByTagName('br');
-//         while (brs.length) {
-//         brs[0].parentNode.removeChild(brs[0]);
-// }
-    
-//   } else {
-//     localStorage.setItem('userName', e.target.innerText)
-
-//   }
-
-
-// }
-
-
-// // Listeners
-
-// userName.addEventListener('keyup', setName);
-// userName.addEventListener('blur', setName);
-
-
 // News Modal
 const articleItem = document.getElementById('article__box');
 const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -514,15 +433,10 @@ let newsArticles = {
   });
 
 
-// newsArticles.fetchNews();
-
-
-
 /*
 
-One location = http://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&appid=7b069d76e3865c86d3513410c18a4226
+Weather App
 
-5 day forecast = https://api.openweathermap.org/data/2.5/onecall?lat=-33.98&lon=-151.12&exclude=hourly,daily&appid=7b069d76e3865c86d3513410c18a4226
 */
 
 const weatherModalBg = document.querySelector('.modal__bg__img');
@@ -601,9 +515,6 @@ let weatherOriginal = {
       document.querySelector('.wind').innerHTML = `
       <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M10.5 17H4v-2h6.5a3.5 3.5 0 1 1-3.278 4.73l1.873-.703A1.5 1.5 0 1 0 10.5 17zM5 11h13.5a3.5 3.5 0 1 1-3.278 4.73l1.873-.703A1.5 1.5 0 1 0 18.5 13H5a3 3 0 0 1 0-6h8.5a1.5 1.5 0 1 0-1.405-2.027l-1.873-.702A3.501 3.501 0 0 1 17 5.5 3.5 3.5 0 0 1 13.5 9H5a1 1 0 1 0 0 2z"></path></g></svg>
       | ${speed}km/h`;
-      // document.querySelector('.weather').classList.remove('loading');
-      // document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?city%20of%20" + name + "')";
-      // document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?${name}")`;
       weather7Day.fetchWeather(lat.toFixed(2), lon.toFixed(2));
     },
     search: function () {
@@ -848,31 +759,6 @@ function errorCallback () {
 // );
 
 
-
-
-
-
-// // Search Duckduckgo Directly.
-
-// document.querySelector('.websr-btn').addEventListener('click', function () {
-//   let onlineSearch = document.querySelector('.online-search');
-//   let searchResult = onlineSearch.value;
-//   window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
-//   onlineSearch.value = '';
-// })
-
-// document.querySelector('.online-search').addEventListener('keyup', function (event) {
-//   if (event.key == 'Enter') {
-//   let onlineSearch = document.querySelector('.online-search');
-//   let searchResult = onlineSearch.value;
-//   window.open(`https://duckduckgo.com/?q=${searchResult}&t=hc&va=u&ia=web`, "_blank");
-//   onlineSearch.value = '';
-//   }
-// })
-
-
-
-
 // Dock buttons open in a new tab.
 
 
@@ -882,14 +768,10 @@ dockContainer.forEach(dockContainer => dockContainer.addEventListener('click', f
     window.open(`https://www.${item}.com`, '_blank');
 }));
 
-
-
 // // Run the app
 
 getGeolocation();
 currentTime();
-// setBgGreeting();
-// getName();
 
 
 
