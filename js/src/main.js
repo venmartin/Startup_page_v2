@@ -368,23 +368,27 @@ function changeSearch (engine) {
 const articleItem = document.getElementById('article__box');
 const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
 
-let newsArticles = {
 
+// GNews api key: 293f39fcb569341a2bf2234ee89c344e
+
+
+newsArticles = {
+  apiKey: "293f39fcb569341a2bf2234ee89c344e",
   fetchNews: function() {
-    fetch("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=world&lang=en&country="
-      // + "AU"
-      + "&media=True", {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-key": "fcca3bccfemshc5d447449233745p17d6dcjsndda59961c6e2",
-        "x-rapidapi-host": "newscatcher.p.rapidapi.com"
-      }
-    })
+    fetch("https://gnews.io/api/v4/top-headlines?"
+      + "token="
+      + this.apiKey
+      + "&lang=en"
+      + "&country="
+      + "au,us,gb"
+      + "&topic=breaking-news,world,sports,business,technology"
+      
+  )
   .then(response => response.json())
-  // .catch(err => {
-  // 	console.error(err);
-  // })
-  .then((data) => this.displayNews(data));
+  .then((data) => 
+  this.displayNews(data));
+  // console.log(data));
+  
   
   
     },
@@ -403,30 +407,85 @@ let newsArticles = {
           createArticle += `
           <div id="article__box">
             <div class="article__items">
-            <div class="news__media__img"><img src='${article.media}' alt="" class='media__img'></div>
+            <div class="news__media__img"><img src='${article.image}' alt="" class='media__img'></div>
             <div class="news__title">${article.title}</div>
-            <div class="news__summary">${article.summary}</div>
+            <div class="news__summary">${article.description}</div>
             <div class="news__info">
-              <div class="news__topic">${article.topic.toUpperCase()} News</div>
-              <div class="news__country">Country: ${regionNamesInEnglish.of(article.country)}</div>
-              <div class="original__source">${article.rights}</div>
-              <div class="original__link"><a href="${article.link}" target="_blank" rel="noopener no-referrer">Source</a></div>
+              
+              <div class="original__source">${article.source.name}</div>
+              <div class="original__link"><a href="${article.url}" target="_blank" rel="noopener no-referrer">Source</a></div>
             </div>
             </div>
         </div>
           `
+          // <div class="news__topic">${article.topic.toUpperCase()} News</div>
+          // <div class="news__country">Country: ${regionNamesInEnglish.of(article.country)}</div>
     } 
     
-  })
+  }
+  )
     articleItem.innerHTML = createArticle;
   },
 };
 
+// let newsArticles = {
+
+//   fetchNews: function() {
+//     fetch("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=world&lang=en&country="
+//       // + "AU"
+//       + "&media=True", {
+//       "method": "GET",
+//       "headers": {
+//         "x-rapidapi-key": "fcca3bccfemshc5d447449233745p17d6dcjsndda59961c6e2",
+//         "x-rapidapi-host": "newscatcher.p.rapidapi.com"
+//       }
+//     })
+//   .then(response => response.json())
+//   // .catch(err => {
+//   // 	console.error(err);
+//   // })
+//   .then((data) => this.displayNews(data));
+  
+  
+//     },
+  
+  
+//     displayNews: function (data) {
+//       // const { articles } = data;
+//       // const { summary, country, link, language, media, title, topic} = data.articles[0];
+
+  
+//       let createArticle = ``;
+//       data.articles.forEach((article, index) => {
+//         if (index == 0) {
+  
+//         } else {
+//           createArticle += `
+//           <div id="article__box">
+//             <div class="article__items">
+//             <div class="news__media__img"><img src='${article.media}' alt="" class='media__img'></div>
+//             <div class="news__title">${article.title}</div>
+//             <div class="news__summary">${article.summary}</div>
+//             <div class="news__info">
+//               <div class="news__topic">${article.topic.toUpperCase()} News</div>
+//               <div class="news__country">Country: ${regionNamesInEnglish.of(article.country)}</div>
+//               <div class="original__source">${article.rights}</div>
+//               <div class="original__link"><a href="${article.link}" target="_blank" rel="noopener no-referrer">Source</a></div>
+//             </div>
+//             </div>
+//         </div>
+//           `
+//     } 
+    
+//   })
+//     articleItem.innerHTML = createArticle;
+//   },
+// };
+
   articleItem.addEventListener('click', newsArticles.fetchNews());
   $('#news-tab').click(function(event) {
     $(this).modal({
-      fadeDuration: 800,
-      fadeDelay: 250
+      fadeDuration: 500
     });
     return false;
   });
@@ -596,14 +655,21 @@ const weather7Day = {
           <div class="weather__forecast__item">
                <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
                 <span class='divider'></span>
-            <div class="third__temp small__temp"><img src='icons/${day.weather[0].icon}.svg' alt="" class='d3 icon__small'> | ${Math.round(day.temp.day)}°</div>
+            <div class="third__temp small__temp"><img src='icons/${day.weather[0].icon}.svg' alt="" class='d3 icon__small'>
+            <span class="small__vert__divider"></span>
+              <div class="temp__small__current">${Math.round(day.temp.day)}°</div>
+              </div>
             <div class="min__max__wrapper">
               <div class="small__max">
-              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V4a.5.5 0 01.5-.5z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L8 3.707 5.354 6.354a.5.5 0 11-.708-.708l3-3z" clip-rule="evenodd"></path></svg>
-               | ${Math.round(day.temp.max)}°</div>
+              <svg class="maxarrow" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V4a.5.5 0 01.5-.5z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L8 3.707 5.354 6.354a.5.5 0 11-.708-.708l3-3z" clip-rule="evenodd"></path></svg>
+              <span class="small__vert__divider"></span>
+              <div class="temp__small__max">${Math.round(day.temp.max)}°</div>
+              </div>
               <div class="small__min">
-              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 01.708 0L8 12.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M8 2.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V3a.5.5 0 01.5-.5z" clip-rule="evenodd"></path></svg>
-               | ${Math.round(day.temp.min)}°</div>
+              <svg class="minarrow" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 01.708 0L8 12.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M8 2.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V3a.5.5 0 01.5-.5z" clip-rule="evenodd"></path></svg>
+              <span class="small__vert__divider"></span>
+              <div class="temp__small__min">${Math.round(day.temp.min)}°</div>
+              </div>
             </div>
             <div class='daily__desc'>
               <div class='daily__humidity'>
