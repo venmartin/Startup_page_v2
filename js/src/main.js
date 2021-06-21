@@ -14,9 +14,9 @@ $.fakeLoader({
 });
 
 
-// Modal
+// Weather Modal
 
-$("#demo01").animatedModal({
+$("#weather__modal").animatedModal({
   color: '#a2a2a2',
   animatedIn: 'fadeInUp',
   animatedOut: 'fadeOutUp',
