@@ -27,11 +27,13 @@
   <title>Startup Page v2.0</title>
 </head>
 
-<body class='preload background'>
+<body id='background' class='preload'>
 
 
   <!-- fake loader -->
   <div class="fakeLoader"></div>
+  
+  <!-- Location Error -->  
   <div id="location-modal" class="modal">
     <h1 class='error-modal-h1'>Error</h1>
     <p class='error-modal'>Location not allowed. Weather cannot be determined by location. Please use the search bar within the weather popup or enable location services.</p>
@@ -184,11 +186,212 @@
         <li class="list__item backgrounds__menu">
           <span class="background__span">
             <svg class="background__icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19,3H5C3.897,3,3,3.897,3,5v14c0,1.103,0.897,2,2,2h14c1.103,0,2-0.897,2-2V5C21,3.897,20.103,3,19,3z M5,19V5h14 l0.002,14H5z"></path><path d="M10 14L9 13 6 17 18 17 13 10z"></path></svg>
-            Background Picker</span></li>
+            Background Picker</span>
+            <button class="background-menu__btn">
+              <svg class="background-menu__svg" stroke="currentColor" fill="currentColor" stroke-width="0"
+                viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M9.5 13a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button></li>
+            <span class='line__divider'></span>
+            <div class="customize__bg__wrapper">
+              <div class="nature__bg">
+                <span class="nature">Nature Backgrounds</span>
+              </div>
+              <div class="city__bg">
+                <span class="cities">City Backgrounds</span>
+              </div>
+
+            </div>
+            <span class='line__divider'></span>
       </ul>
     </div>
 
   </div>
+  <!-- Background Picker Modal -->
+
+  <div id="nature-modal" class="modal">
+    
+    <div id="bg__wrapper">
+      
+      <div id="card-slider" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+            <div class="splide__slide__container">
+              <img class='bg__img' src="img/bg/bg_forest1.jpg">
+            </div>
+              <div class='bg__desc'>
+                Photo by Roberto Nickson from Pexels
+              </div>
+            </li>
+            <li class="splide__slide">
+              <div class="splide__slide__container">
+                <img class='bg__img'src="img/bg/bg_waterfall.jpg">
+              </div>
+              
+              <div class='bg__desc'>
+                Photo by Sam Kolder from Pexels
+              </div>
+              <li class="splide__slide">
+                <div class="splide__slide__container">
+                  <img class='bg__img'src="img/bg/bg_nature1.jpg">
+                </div>
+                  
+                <div class='bg__desc'>
+                  Photo by Aarti Vijay from Pexels
+                </div>
+                <li class="splide__slide">
+                  <div class="splide__slide__container">
+                    <img class='bg__img'src="img/bg/bg_snow1.jpg">
+                  </div>
+                  
+                  <div class='bg__desc'>
+                    Photo by Janez Podnar from Pexels
+                  </div>
+                  <li class="splide__slide">
+                    <div class="splide__slide__container">
+                      <img class='bg__img'src="img/bg/bg_mountain1.jpg">
+                    </div>
+                    
+                    <div class='bg__desc'>
+                      Photo by Lum3n from Pexels
+                    </div>
+                    <li class="splide__slide">
+                      <div class="splide__slide__container">
+                        <img class='bg__img'src="img/bg/bg_mountain2.jpg">
+                      </div>
+                      
+                      <div class='bg__desc'>
+                        Photo by James Wheeler from Pexels
+                      </div>
+                      <li class="splide__slide">
+                        <div class="splide__slide__container">
+                          <img class='bg__img'src="img/bg/bg_mountain3.jpg">
+                        </div>
+                        
+                        <div class='bg__desc'>
+                          Photo by Troy Squillaci from Pexels
+                        </div>
+                        <li class="splide__slide">
+                          <div class="splide__slide__container">
+                            <img class='bg__img' src="img/bg/bg_beach1.jpg">
+                          </div>
+                          
+                          <div class='bg__desc'>
+                            Photo by Pok Rie from Pexels
+                          </div>
+                          
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+    <a href="#" rel="modal:close"></a>
+  </div>
+
+
+    <!-- City Modal -->
+
+  <div id="city-modal" class="modal">
+    
+    <div id="bg__wrapper">
+      
+      <div id="card-slider2" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <div class="splide__slide__container">
+                <img class='bg__img'src="img/bg/cyberpunk1.jpg">
+              </div>
+                <div class='bg__desc'>
+                  Photo by Markus Winkler from Pexels
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class="splide__slide__container">
+                  <img class='bg__img'src="img/bg/night_city1.jpg">
+                </div>
+                  <div class='bg__desc'>
+                    Photo by Sanaan Mazhar from Pexels
+                  </div>
+                </li>
+                <li class="splide__slide">
+                  <div class="splide__slide__container">
+                    <img class='bg__img'src="img/bg/bg_city1.jpg">
+                  </div>
+                    <div class='bg__desc'>
+                      Photo by Vladislav Murashko from Pexels
+                    </div>
+                  </li>
+                  <li class="splide__slide">
+                    <div class="splide__slide__container">
+                      <img class='bg__img'src="img/bg/bg_city2.jpg">
+                    </div>
+                      <div class='bg__desc'>
+                        Photo by edwin josé vega ramos from Pexels
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="splide__slide__container">
+                        <img class='bg__img'src="img/bg/night_city2.jpg">
+                      </div>
+                        <div class='bg__desc'>
+                          Photo by lexi lauwers from Pexels
+                        </div>
+                      </li>
+                      <li class="splide__slide">
+                        <div class="splide__slide__container">
+                          <img class='bg__img'src="img/bg/night_city3.jpg">
+                        </div>
+                          <div class='bg__desc'>
+                            Photo from Pexels
+                          </div>
+                        </li>
+                        <li class="splide__slide">
+                          <div class="splide__slide__container">
+                            <img class='bg__img'src="img/bg/bg_city3.jpg">
+                          </div>
+                            <div class='bg__desc'>
+                              Photo from Pexels
+                            </div>
+                          </li>
+                          <li class="splide__slide">
+                            <div class="splide__slide__container">
+                              <img class='bg__img'src="img/bg/bg_indoorforest.jpg">
+                            </div>
+                              <div class='bg__desc'>
+                                Photo by Weewe Tan from Pexels
+                              </div>
+                            </li>
+                            <li class="splide__slide">
+                              <div class="splide__slide__container">
+                                <img class='bg__img'src="img/bg/cyberpunk2.jpg">
+                              </div>
+                                <div class='bg__desc'>
+                                  Photo by Jonathan Formento from Pexels
+                                </div>
+                              </li>
+                              <li class="splide__slide">
+                                <div class="splide__slide__container">
+                                  <img class='bg__img' src="img/bg/neon1.jpg">
+                                </div>
+                                  <div class='bg__desc'>
+                                    Photo by Deva Darshan from Pexels
+                                  </div>
+                                </li>
+
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+    <a href="#" rel="modal:close"></a>
+  </div>
+  
 
   <!-- News Modal -->
   <!-- Modal HTML embedded directly into document -->
@@ -536,7 +739,7 @@
   <script src="js/animatedModal.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script src="js/glider.js"></script>
-  <script src="js/splide.js"></script>
+  <script src="js/splide.min.js"></script>
   <script src="js/dist/bundle.js"></script>
   <!-- <script src="js/main.js"></script> -->
 

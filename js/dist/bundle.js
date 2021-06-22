@@ -777,11 +777,98 @@ function errorCallback () {
 }
 
 
+// Background Changer
+//
+/////////////////////
 
 
+document.querySelector('.background-menu__btn').addEventListener('click', function () {
+  let bgMenuBtn = document.querySelector('.background-menu__svg');
+  let bgMenuAni = document.querySelector('.customize__bg__wrapper');
+  bgMenuBtn.classList.toggle('bg__btn__rotate');
+  bgMenuAni.classList.toggle('customize__bg-open');
+})
+
+// document.querySelector('.nature__bg');
+// document.querySelector('.city__bg');
+
+document.querySelector('.nature__bg').addEventListener('click', function () {
+  $('#nature-modal').modal({
+    fadeDuration: 500,
+    fadeDelay: 0.50
+  });
+  console.log('This Is Working');
+  
+}) 
+
+document.querySelector('.city__bg').addEventListener('click', function () {
+  $('#city-modal').modal({
+    fadeDuration: 500,
+    fadeDelay: 0.50
+  });
+  console.log('This Is Working');
+  
+}) 
+ 
+document.addEventListener( 'DOMContentLoaded', function () {
+	new Splide( '#card-slider', {
+		type: 'loop',
+    perPage    : 2,
+    cover: true,
+    start: 1,
+    lazyLoad: 'sequential',
+		breakpoints: {
+			600: {
+				perPage: 1,
+        height: '6rem',
+			}
+		}
+	} ).mount();
+} );
+
+document.addEventListener( 'DOMContentLoaded', function () {
+	new Splide( '#card-slider2', {
+		type: 'loop',
+    perPage    : 2,
+    cover: true,
+    start: 1,
+    lazyLoad: 'sequential',
+		breakpoints: {
+			600: {
+				perPage: 1,
+        height: '6rem',
+			}
+		}
+	} ).mount();
+} );
 
 
+const bgImg = document.querySelectorAll('.splide__slide__container');
 
+// for (var i = 0; i < bgImg.length; i++) {
+//   bgImg[i].addEventListener('click', function () {
+//     console.log('test');
+//   });
+// }
+
+
+for (const img of bgImg) {
+  img.addEventListener('click', function(e) {
+    
+    for (var i = 0; i < img.children.length; i++) {
+      let childImg = img.children[i].getAttribute('src');
+      document.getElementById('background').style.backgroundImage = `url(${childImg})`;
+      // let bodyBg = document.getElementById('background');
+      // bodyBg.style.backgroundImage = url(`${childImg}`);
+      console.log(childImg);
+
+    }
+      // document.getElementById('background').style.backgroundImage = `${childImg}`;
+      
+      // bodyBg.style.backgroundImage = `url('${childImg}')`;
+
+  })
+}
 
 
 
