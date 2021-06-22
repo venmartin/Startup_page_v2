@@ -396,10 +396,6 @@ newsArticles = {
   
   
     displayNews: function (data) {
-      // const { articles } = data;
-      // const { summary, country, link, language, media, title, topic} = data.articles[0];
-
-  
       let createArticle = ``;
       data.articles.forEach((article, index) => {
         if (index == 0) {
@@ -428,60 +424,6 @@ newsArticles = {
     articleItem.innerHTML = createArticle;
   },
 };
-
-// let newsArticles = {
-
-//   fetchNews: function() {
-//     fetch("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=world&lang=en&country="
-//       // + "AU"
-//       + "&media=True", {
-//       "method": "GET",
-//       "headers": {
-//         "x-rapidapi-key": "fcca3bccfemshc5d447449233745p17d6dcjsndda59961c6e2",
-//         "x-rapidapi-host": "newscatcher.p.rapidapi.com"
-//       }
-//     })
-//   .then(response => response.json())
-//   // .catch(err => {
-//   // 	console.error(err);
-//   // })
-//   .then((data) => this.displayNews(data));
-  
-  
-//     },
-  
-  
-//     displayNews: function (data) {
-//       // const { articles } = data;
-//       // const { summary, country, link, language, media, title, topic} = data.articles[0];
-
-  
-//       let createArticle = ``;
-//       data.articles.forEach((article, index) => {
-//         if (index == 0) {
-  
-//         } else {
-//           createArticle += `
-//           <div id="article__box">
-//             <div class="article__items">
-//             <div class="news__media__img"><img src='${article.media}' alt="" class='media__img'></div>
-//             <div class="news__title">${article.title}</div>
-//             <div class="news__summary">${article.summary}</div>
-//             <div class="news__info">
-//               <div class="news__topic">${article.topic.toUpperCase()} News</div>
-//               <div class="news__country">Country: ${regionNamesInEnglish.of(article.country)}</div>
-//               <div class="original__source">${article.rights}</div>
-//               <div class="original__link"><a href="${article.link}" target="_blank" rel="noopener no-referrer">Source</a></div>
-//             </div>
-//             </div>
-//         </div>
-//           `
-//     } 
-    
-//   })
-//     articleItem.innerHTML = createArticle;
-//   },
-// };
 
   articleItem.addEventListener('click', newsArticles.fetchNews());
   $('#news-tab').click(function(event) {
@@ -760,8 +702,8 @@ function successCallback(position) {
   const {latitude, longitude} = position.coords;
   let shortLat = Math.round(latitude * 100) / 100;
   let shortLong = Math.round(longitude * 100) / 100;
-  console.log(shortLat);
-  console.log(shortLong);
+  // console.log(shortLat);
+  // console.log(shortLong);
 
   weatherOriginal.fetchWeather(latitude, longitude);
   weather7Day.fetchWeather(latitude, longitude);
@@ -816,8 +758,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     perPage    : 2,
     cover: true,
     start: 1,
-    lazyLoad: 'sequential',
-		breakpoints: {
+    breakpoints: {
 			600: {
 				perPage: 1,
         height: '6rem',
@@ -832,8 +773,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
     perPage    : 2,
     cover: true,
     start: 1,
-    lazyLoad: 'sequential',
-		breakpoints: {
+    breakpoints: {
 			600: {
 				perPage: 1,
         height: '6rem',
@@ -844,13 +784,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 
 const bgImg = document.querySelectorAll('.splide__slide__container');
-
-// for (var i = 0; i < bgImg.length; i++) {
-//   bgImg[i].addEventListener('click', function () {
-//     console.log('test');
-//   });
-// }
-
 
 for (const img of bgImg) {
   img.addEventListener('click', function(e) {
@@ -863,11 +796,8 @@ for (const img of bgImg) {
       console.log(childImg);
 
     }
-      // document.getElementById('background').style.backgroundImage = `${childImg}`;
-      
-      // bodyBg.style.backgroundImage = `url('${childImg}')`;
-
-  })
+  }
+  )
 }
 
 

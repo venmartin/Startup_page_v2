@@ -86,7 +86,7 @@ header {
   background: none;
   outline: none;
   border: none;
-  color: #1b1b1b;
+  color: #ffffff;
   cursor: pointer;
   transition: 0.8s;
   transition-timing-function: cubic-bezier(0.245, 1.075, 0.830, 1.010);
@@ -623,9 +623,9 @@ Online Search
   position: relative;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 100px;
-  /* background: #0000005b; */
+  background: #00000015;
   
 }
 
@@ -665,7 +665,7 @@ Online Search
 
 .online-search {
   position: relative;
-  border: 2px solid rgb(0, 0, 0);
+  border: 2px solid rgb(255, 255, 255);
   border-radius: 18px;
   width: 400px;
   height: 25px;
@@ -681,7 +681,7 @@ Online Search
 }
 
 .online-search::placeholder {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-style: italic;
   font-weight: bolder;
 }
@@ -703,8 +703,22 @@ Online Search
   cursor: pointer;
 }
 
+
+.search-icon {
+  background-color: rgba(255, 255, 255, 0.192);
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.search-icon:hover {
+  background-color: rgba(255, 255, 255, 0.349);
+  border-radius: 20%;
+  transition: 0.5s;
+}
+
 .search__icon {
   transition: 0.5s;
+  color: white;
 }
 
 .search__icon:hover {
