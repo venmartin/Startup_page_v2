@@ -369,68 +369,61 @@ const articleItem = document.getElementById('article__box');
 const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
 
 
-// GNews api key: 293f39fcb569341a2bf2234ee89c344e
-
-
-// newsArticles = {
-//   apiKey: "293f39fcb569341a2bf2234ee89c344e",
-//   fetchNews: function() {
-//     fetch("https://gnews.io/api/v4/top-headlines?"
-//       + "token="
-//       + this.apiKey
-//       + "&lang=en"
-//       + "&country="
-//       + "au,us,gb"
-//       + "&topic=breaking-news,world,sports,business,technology"
+newsArticles = {
+  apiKey: "293f39fcb569341a2bf2234ee89c344e",
+  fetchNews: function() {
+    fetch("https://gnews.io/api/v4/top-headlines?"
+      + "token="
+      + this.apiKey
+      + "&lang=en"
+      + "&country="
+      + "au,us,gb"
+      + "&topic=breaking-news,world,sports,business,technology"
       
-//   )
-//   .then(response => response.json())
-//   .then((data) => 
-//   this.displayNews(data));
-//   // console.log(data));
+  )
+  .then(response => response.json())
+  .then((data) => 
+  this.displayNews(data));
+  // console.log(data));
   
   
   
-//     },
+    },
   
   
-//     displayNews: function (data) {
-//       let createArticle = ``;
-//       data.articles.forEach((article, index) => {
-//         if (index == 0) {
-  
-//         } else {
-//           createArticle += `
-//           <div id="article__box">
-//             <div class="article__items">
-//             <div class="news__media__img"><img src='${article.image}' alt="" class='media__img'></div>
-//             <div class="news__title">${article.title}</div>
-//             <div class="news__summary">${article.description}</div>
-//             <div class="news__info">
+    displayNews: function (data) {
+      let createArticle = ``;
+      data.articles.forEach((article, index) => {
+     
+          createArticle += `
+          <div id="article__box">
+            <div class="article__items">
+            <div class="news__media__img"><img src='${article.image}' alt="" class='media__img'></div>
+            <div class="news__title">${article.title}</div>
+            <div class="news__summary">${article.description}</div>
+            <div class="news__info">
               
-//               <div class="original__source">${article.source.name}</div>
-//               <div class="original__link"><a href="${article.url}" target="_blank" rel="noopener no-referrer">Source</a></div>
-//             </div>
-//             </div>
-//         </div>
-//           `
-//           // <div class="news__topic">${article.topic.toUpperCase()} News</div>
-//           // <div class="news__country">Country: ${regionNamesInEnglish.of(article.country)}</div>
-//     } 
+              <div class="original__source">${article.source.name}</div>
+              <div class="original__link"><a href="${article.url}" target="_blank" rel="noopener no-referrer">Source</a></div>
+            </div>
+            </div>
+        </div>
+          `
     
-//   }
-//   )
-//     articleItem.innerHTML = createArticle;
-//   },
-// };
+    
+  }
+  )
+    articleItem.innerHTML = createArticle;
+  },
+};
 
-//   articleItem.addEventListener('click', newsArticles.fetchNews());
-//   $('#news-tab').click(function(event) {
-//     $(this).modal({
-//       fadeDuration: 500
-//     });
-//     return false;
-//   });
+  articleItem.addEventListener('click', newsArticles.fetchNews());
+  $('#news-tab').click(function(event) {
+    $(this).modal({
+      fadeDuration: 500
+    });
+    return false;
+  });
 
 
 /*
@@ -674,10 +667,12 @@ const weather7Day = {
 
       
       let everyOtherDay = '';
+      let currentTemp = '';
       data.daily.forEach((day, index) => {
         if (index == 0) {
           
-          // currentTemp.innerHTML = `          
+          currentTemp.innerHTML = '';
+          
           // <div id='current__forecast__small' class="weather__forecast__item">
           //  <img src='icons/${day.weather[0].icon}.svg' alt="" class='icon icon__small'>
           //  <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
