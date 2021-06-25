@@ -373,65 +373,65 @@ const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
 // GNews api key: 293f39fcb569341a2bf2234ee89c344e
 
 
-newsArticles = {
-  apiKey: "293f39fcb569341a2bf2234ee89c344e",
-  fetchNews: function() {
-    fetch("https://gnews.io/api/v4/top-headlines?"
-      + "token="
-      + this.apiKey
-      + "&lang=en"
-      + "&country="
-      + "au,us,gb"
-      + "&topic=breaking-news,world,sports,business,technology"
+// newsArticles = {
+//   apiKey: "293f39fcb569341a2bf2234ee89c344e",
+//   fetchNews: function() {
+//     fetch("https://gnews.io/api/v4/top-headlines?"
+//       + "token="
+//       + this.apiKey
+//       + "&lang=en"
+//       + "&country="
+//       + "au,us,gb"
+//       + "&topic=breaking-news,world,sports,business,technology"
       
-  )
-  .then(response => response.json())
-  .then((data) => 
-  this.displayNews(data));
-  // console.log(data));
+//   )
+//   .then(response => response.json())
+//   .then((data) => 
+//   this.displayNews(data));
+//   // console.log(data));
   
   
   
-    },
+//     },
   
   
-    displayNews: function (data) {
-      let createArticle = ``;
-      data.articles.forEach((article, index) => {
-        if (index == 0) {
+//     displayNews: function (data) {
+//       let createArticle = ``;
+//       data.articles.forEach((article, index) => {
+//         if (index == 0) {
   
-        } else {
-          createArticle += `
-          <div id="article__box">
-            <div class="article__items">
-            <div class="news__media__img"><img src='${article.image}' alt="" class='media__img'></div>
-            <div class="news__title">${article.title}</div>
-            <div class="news__summary">${article.description}</div>
-            <div class="news__info">
+//         } else {
+//           createArticle += `
+//           <div id="article__box">
+//             <div class="article__items">
+//             <div class="news__media__img"><img src='${article.image}' alt="" class='media__img'></div>
+//             <div class="news__title">${article.title}</div>
+//             <div class="news__summary">${article.description}</div>
+//             <div class="news__info">
               
-              <div class="original__source">${article.source.name}</div>
-              <div class="original__link"><a href="${article.url}" target="_blank" rel="noopener no-referrer">Source</a></div>
-            </div>
-            </div>
-        </div>
-          `
-          // <div class="news__topic">${article.topic.toUpperCase()} News</div>
-          // <div class="news__country">Country: ${regionNamesInEnglish.of(article.country)}</div>
-    } 
+//               <div class="original__source">${article.source.name}</div>
+//               <div class="original__link"><a href="${article.url}" target="_blank" rel="noopener no-referrer">Source</a></div>
+//             </div>
+//             </div>
+//         </div>
+//           `
+//           // <div class="news__topic">${article.topic.toUpperCase()} News</div>
+//           // <div class="news__country">Country: ${regionNamesInEnglish.of(article.country)}</div>
+//     } 
     
-  }
-  )
-    articleItem.innerHTML = createArticle;
-  },
-};
+//   }
+//   )
+//     articleItem.innerHTML = createArticle;
+//   },
+// };
 
-  articleItem.addEventListener('click', newsArticles.fetchNews());
-  $('#news-tab').click(function(event) {
-    $(this).modal({
-      fadeDuration: 500
-    });
-    return false;
-  });
+//   articleItem.addEventListener('click', newsArticles.fetchNews());
+//   $('#news-tab').click(function(event) {
+//     $(this).modal({
+//       fadeDuration: 500
+//     });
+//     return false;
+//   });
 
 
 /*
@@ -439,6 +439,101 @@ newsArticles = {
 Weather App
 
 */
+const photoCredits = [
+  {
+    "icon": "01d",
+    "name": "Ishan @seefromthesky",
+    "location": "Alifu Alifu Atoll, Maldives"
+  },
+  {
+    "icon": "01n",
+    "name": "Mohammad Alizade",
+    "location": "Mashhad, Iran"
+  },
+  {
+    "icon": "02d",
+    "name": "Sam Moqadam",
+    "location":  "Abyaneh, Isfahan Province, Iran"
+  },
+  {
+    "icon": "02n",
+    "name": "Roan Lavery",
+    "location":  "Djúpalónssandur beach, Iceland"
+  },
+  {
+    "icon": "03d",
+    "name": "Fabio Jock",
+    "location":  "Lanzarote, Spain"
+  },
+  {
+    "icon": "03n",
+    "name": "NOAA @noaa",
+    "location": "Mount Hood, Oregon, United States"
+  },
+  {
+    "icon": "04d",
+    "name": "Michael Weidemann",
+    "location":  "Graciosa, Spain"
+  },
+  {
+    "icon": "04n",
+    "name": "Nathan Anderson",
+    "location":  "Crescent, United States"
+  },
+  {
+    "icon": "09d",
+    "name": "Thom Milkovic",
+    "location":  ""
+  },
+  {
+    "icon": "09n",
+    "name": "Hafidh Satyanto",
+    "location":  "Pike Street, Seattle, United States"
+  },
+  {
+    "icon": "10d",
+    "name": "Nick Scheerbart",
+    "location":  "Frossen Bratte, Norway"
+  },
+  {
+    "icon": "10n",
+    "name": "Rowan Heuval",
+    "location":  "Rotterdam, Netherlands"
+  },
+  {
+    "icon": "11d",
+    "name": "Alexandre Brondino",
+    "location":  "Versailles, France"
+  },
+  {
+    "icon": "11n",
+    "name": "Kryzysztof Kotkowicz",
+    "location":  "Warsaw, Poland"
+  },
+  {
+    "icon": "13d",
+    "name": "Jeremy Bishop",
+    "location":  ""
+  },
+  {
+    "icon": "13n",
+    "name": "Branden Jarvis",
+    "location":  "Banff, Canada"
+  },
+  {
+    "icon": "50d",
+    "name": "Nick Van Den Berg",
+    "location":  "Bangkok, Thailand"
+  },
+  {
+    "icon": "50n",
+    "name": "Khamkeo Vilaysing",
+    "location":  "Barrika, Spain"
+  },
+];
+
+let displayCredits = document.getElementById('credits');
+
 
 const weatherModalBg = document.querySelector('.modal__bg__img');
 
@@ -478,13 +573,22 @@ let weatherOriginal = {
       const { speed } = data.wind;
       const { lon, lat} = data.coord;
       
+      
       let weatherIcons = document.querySelectorAll('.icon');
-        weatherIcons.forEach(function(item){
-          item.src = `icons/${icon}.svg`
-        });
+      weatherIcons.forEach(function(item){
+        item.src = `icons/${icon}.svg`
+      });
+      
+        
+      for (i = 0; i < photoCredits.length; i++) {
+        if (icon == photoCredits[i].icon) {
+          displayCredits.innerHTML = `${photoCredits[i].name}, ${photoCredits[i].location}`;
+        }
+      }
 
       
-      weatherModalBg.style.backgroundImage = `url('img/${icon}.jpg')`;
+      
+       weatherModalBg.style.backgroundImage = `url('img/${icon}.jpg')`;
       
       
       document.querySelector('.city').innerText = `${name}, ${country}`;
@@ -651,7 +755,7 @@ const weather7Day = {
        | ${window.moment(sunrise*1000).format('HH:mm a')}`;
       document.querySelector('.sunset').innerHTML = `
       <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M247 27v80h18V27h-18zm-63.992 53.602l-16.631 6.886 15.309 36.955 16.628-6.886-15.306-36.955zm145.984 0l-15.306 36.955 16.628 6.886 15.309-36.955-16.63-6.886zM77.795 92.068l-12.727 12.727 56.569 56.568 12.726-12.726-56.568-56.569zm356.41 0l-56.568 56.569 12.726 12.726 56.569-56.568-12.727-12.727zM256 145.994a118.919 118.919 0 0 0-59.5 15.95c-34.215 19.754-56.177 55.048-59.129 94.056H374.63c-2.952-39.008-24.914-74.302-59.129-94.057a118.919 118.919 0 0 0-59.5-15.949zM66.488 195.377l-6.886 16.63 36.955 15.307 6.886-16.628-36.955-15.31zm379.024 0l-36.955 15.309 6.886 16.628 36.955-15.306-6.886-16.631zM24 274v18h464v-18H24zm200 62v64h-32l64 80 64-80h-32v-64h-64z"></path></svg>
-      | ${window.moment(sunset*1000).format('HH:mm a')}`;
+      | ${window.moment(sunset*1000).format('HH:mm')}`;
  
       forecastItem.innerHTML = everyOtherDay;
     },
@@ -737,27 +841,30 @@ document.querySelector('.background-menu__btn').addEventListener('click', functi
 document.querySelector('.nature__bg').addEventListener('click', function () {
   $('#nature-modal').modal({
     fadeDuration: 500,
-    fadeDelay: 0.50
+    fadeDelay: 0.50,
   });
-  console.log('This Is Working');
+  
   
 }) 
 
 document.querySelector('.city__bg').addEventListener('click', function () {
   $('#city-modal').modal({
     fadeDuration: 500,
-    fadeDelay: 0.50
+    fadeDelay: 0.50,
   });
-  console.log('This Is Working');
+  
   
 }) 
  
 document.addEventListener( 'DOMContentLoaded', function () {
 	new Splide( '#card-slider', {
-		type: 'loop',
-    perPage    : 2,
+		type: 'slide',
+    perPage    : 1,
     cover: true,
-    start: 1,
+    start: 0,
+    trimSpace: false,
+    autoWidth: true,
+    focus: 'center',
     breakpoints: {
 			600: {
 				perPage: 1,
@@ -769,10 +876,13 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 document.addEventListener( 'DOMContentLoaded', function () {
 	new Splide( '#card-slider2', {
-		type: 'loop',
+		type: 'slide',
     perPage    : 2,
     cover: true,
-    start: 1,
+    start: 0,
+    trimSpace: false,
+    autoWidth: true,
+    focus: 'center',
     breakpoints: {
 			600: {
 				perPage: 1,
@@ -799,47 +909,6 @@ for (const img of bgImg) {
   }
   )
 }
-
-
-
-
-
-
-
-// // Change background on button click
-
-// document.querySelector('.shift-bg1').addEventListener('click', function() {
-//   document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?cyberpunk")`;
-//   return;
-// })
-
-// document.querySelector('.shift-bg2').addEventListener('click', function() {
-//   document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?nature")`;
-// })
-
-// document.querySelector('.shift-bg3').addEventListener('click', function() {
-//    document.body.style.backgroundImage = `url("https://source.unsplash.com/1600x900/?city")`;
-// })
-
-
-// // Drop down background changer
-
-// document.querySelector('.dropbtn').addEventListener('click', function () {
-//   let dropBtn = document.querySelector('.dropbtn');
-  
-//   if(dropBtn.classList) {
-//     let bgDrop = document.querySelector('.change-bg');
-//     let bgBtn1 = document.querySelector('.shift-bg1');
-//     let bgBtn2 = document.querySelector('.shift-bg2');
-//     let bgBtn3 = document.querySelector('.shift-bg3');
-//     bgBtn1.classList.toggle('shift-hide');
-//     bgBtn2.classList.toggle('shift-hide');
-//     bgBtn3.classList.toggle('shift-hide');
-//     bgDrop.classList.toggle('dropdown-bg');
-//     dropBtn.classList.toggle('dropbtn-rotate');
-//   }
-//  }  
-// );
 
 
 // Dock buttons open in a new tab.

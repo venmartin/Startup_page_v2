@@ -150,12 +150,6 @@ Nav Links
   width: 100%;
 }
 
-/* .navitem__stretch > *{
-  display: flex;
-  flex-basis: auto;
-  justify-content: space-between;
-  
-} */
 .shortcut__item {
   display: flex;
   width: 100%;
@@ -473,6 +467,7 @@ Nav Links
 
 .bg__desc {
   font-size: 12px;
+  padding-left: 15px;
 }
 
 #bg__wrapper {
@@ -491,6 +486,7 @@ Nav Links
   height: 200px;
   margin: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 
@@ -605,6 +601,7 @@ Time / Clock & date
   font-size: 24px;
   height: 65px;
   width: 94px;
+  top: 0px;
 }
 
 .large__date {
@@ -770,7 +767,7 @@ Shortcuts
   font-weight: bolder;
   transform: translateX(90px);
   transition: 0.5s;
-  border: 2px solid rgb(255, 255, 255);
+  border: 1.8px solid rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0.404);
   border-radius: 15px;
 }
@@ -779,7 +776,7 @@ Shortcuts
   text-align: center;
   justify-content: center;
   right: 0px;
-  text-shadow: 0px 0px 3px #ffffff5b;
+  /* text-shadow: 0px 0px 3px #ffffff5b; */
   transition: 0.5s;
   font-weight: bolder;
   font-size: 18px;
@@ -791,7 +788,7 @@ Shortcuts
 }
 
 .span-dock:hover {
-  text-shadow: 0px 0px 6px #fff;
+  /* text-shadow: 0px 0px 6px #fff; */
   color:rgb(255, 255, 255);
   transition: 0.5s;
 }
@@ -802,14 +799,12 @@ Shortcuts
   padding: 5px;
   right:0;
   transition: 0.5s;
-  /* transform: rotate(0deg); */
   transform:rotateY(0deg);
   color:rgb(255, 255, 255)  ;
 }
 
 .shortcut-menu__btn-rotate {
   transition: 0.5s;
-  /* transform: rotate(180deg); */
   transform: rotateY(180deg);
 }
 
@@ -839,7 +834,7 @@ Shortcuts
   height: 60px;
   width: 60px;
   color: #000;
-  background: #ffffff5a;
+  background: #ffffff7c;
   border-radius: 5px;
   align-items: center;
   opacity: 1;
@@ -879,13 +874,18 @@ Shortcuts
 }
 
 #instagram svg{
+  position: absolute;
+  padding: 15px;
+  left: 0;
   transition: 0.5s;
+  
 }
 
 #instagram svg:hover {
   fill: url(#rg);
   transition: 0.5s;
 }
+
 
 #youtube:hover {
   color: rgb(255, 50, 50);
@@ -1168,6 +1168,35 @@ Weather Pop up / Modal
   background-position: center;
   transition: 1s;
   background-image: url('../img/01d.jpg');
+  
+
+}
+
+/* .bg__cred__pos {
+ position: absolute;
+ bottom: 0px;
+ right: 0px;
+} */
+
+.bg__credits {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin-top: 0px;
+  /* background-color: #0000002a; */
+  height: 40px;
+  width: 40%;
+    
+}
+
+#credits {
+  /* font-weight: bolder; */
+  font-size: 16px;
+  color: white;
+  margin-left: 20px;
   
 
 }
