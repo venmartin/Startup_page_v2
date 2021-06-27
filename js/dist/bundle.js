@@ -369,61 +369,61 @@ const articleItem = document.getElementById('article__box');
 const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
 
 
-// newsArticles = {
-//   apiKey: "293f39fcb569341a2bf2234ee89c344e",
-//   fetchNews: function() {
-//     fetch("https://gnews.io/api/v4/top-headlines?"
-//       + "token="
-//       + this.apiKey
-//       + "&lang=en"
-//       + "&country="
-//       + "au,us,gb"
-//       + "&topic=breaking-news,world,sports,business,technology"
+newsArticles = {
+  apiKey: "293f39fcb569341a2bf2234ee89c344e",
+  fetchNews: function() {
+    fetch("https://gnews.io/api/v4/top-headlines?"
+      + "token="
+      + this.apiKey
+      + "&lang=en"
+      + "&country="
+      + "au,us,gb"
+      + "&topic=breaking-news,world,sports,business,technology"
       
-//   )
-//   .then(response => response.json())
-//   .then((data) => 
-//   this.displayNews(data));
-//   // console.log(data));
+  )
+  .then(response => response.json())
+  .then((data) => 
+  this.displayNews(data));
+  // console.log(data));
   
   
   
-//     },
+    },
   
   
-//     displayNews: function (data) {
-//       let createArticle = ``;
-//       data.articles.forEach((article, index) => {
+    displayNews: function (data) {
+      let createArticle = ``;
+      data.articles.forEach((article, index) => {
      
-//           createArticle += `
-//           <div id="article__box">
-//             <div class="article__items">
-//             <div class="news__media__img"><img src='${article.image}' alt="" class='media__img'></div>
-//             <div class="news__title">${article.title}</div>
-//             <div class="news__summary">${article.description}</div>
-//             <div class="news__info">
+          createArticle += `
+          <div id="article__box">
+            <div class="article__items">
+            <div class="news__media__img"><img src='${article.image}' alt="" class='media__img'></div>
+            <div class="news__title">${article.title}</div>
+            <div class="news__summary">${article.description}</div>
+            <div class="news__info">
               
-//               <div class="original__source">${article.source.name}</div>
-//               <div class="original__link"><a href="${article.url}" target="_blank" rel="noopener no-referrer">Source</a></div>
-//             </div>
-//             </div>
-//         </div>
-//           `
+              <div class="original__source">${article.source.name}</div>
+              <div class="original__link"><a href="${article.url}" target="_blank" rel="noopener no-referrer">Source</a></div>
+            </div>
+            </div>
+        </div>
+          `
     
     
-//   }
-//   )
-//     articleItem.innerHTML = createArticle;
-//   },
-// };
+  }
+  )
+    articleItem.innerHTML = createArticle;
+  },
+};
 
-//   articleItem.addEventListener('click', newsArticles.fetchNews());
-//   $('#news-tab').click(function(event) {
-//     $(this).modal({
-//       fadeDuration: 500
-//     });
-//     return false;
-//   });
+  articleItem.addEventListener('click', newsArticles.fetchNews());
+  $('#news-tab').click(function(event) {
+    $(this).modal({
+      fadeDuration: 500
+    });
+    return false;
+  });
 
 
 /*
