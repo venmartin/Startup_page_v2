@@ -1,4 +1,4 @@
-# Xeon_newtab_page
+# Xeon Newtab Dashboard
 I created this page as a test to myself to explore my abilities as a beginner coder.
 It is a replacement start up page / new tab page for Google Chrome Desktop only.
 
