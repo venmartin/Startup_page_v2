@@ -4,8 +4,8 @@ Something that I would like to continue to work on in the future and perhaps exp
 
 
 ## Contents
-- Location based OpenWeatherMap
-- GNews API for daily news
+- Location based Weather [OpenWeatherMap][weather] / Type in any City
+- Daily news powered by [Gnews][news]
 - Animated customization menu
 - Time 12h | 24h
 - Background Selector
@@ -23,4 +23,19 @@ Something that I would like to continue to work on in the future and perhaps exp
 </p>
 
 
+>#### Credits for library use:
+- [OpenWeatherMap][weather]
+- [Gnews][news]
+- [SplideJS][splide]
+- [fakeLoader][fload]
+- [Glider][glide]
+
+
+
+
 [xeon]: https://venmartin.github.io/Xeon_newtab_dashboard/
+[weather]: https://openweathermap.org/
+[news]: https://gnews.io/
+[splide]: https://splidejs.com/
+[fload]: https://github.com/joaopereirawd/fakeLoader.js/
+[glide]: https://github.com/NickPiscitelli/Glider.js
